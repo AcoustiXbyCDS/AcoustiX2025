@@ -1,261 +1,298 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <title>Colorlib Alotan Barber Shop Template</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<head>
+  <title>About Us | CDS Plastics</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet"> 
+  <!-- Fonts & CSS -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,600,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/animate.css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
+  <style>
+    :root{
+      --header-h: 90px;
+      --page-bg: #f5f5f5;
+      --page-dot: #e8e8e8;
+      --text: #222;
+      --muted: #555;
+      --accent: #0066cc;
+      --accent-600:#004a99;
+      --footer-bg:#1a1a1a;
+    }
+    body{
+      margin:0; font-family:'Poppins',sans-serif; color:var(--text);
+      background:var(--page-bg);
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 22 22'%3E%3Ccircle cx='1.5' cy='1.5' r='1' fill='%23e8e8e8'/%3E%3C/svg%3E");
+      background-repeat:repeat;
+    }
+    html{scroll-behavior:smooth;}
 
-    <link rel="stylesheet" href="fonts/ionicons/css/ionicons.min.css">
-    <link rel="stylesheet" href="fonts/fontawesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
-    
+    /* HEADER */
+    header{
+      position:fixed; inset:0 0 auto 0; height:var(--header-h);
+      display:flex; justify-content:center; align-items:center;
+      z-index:1000; transition:background .35s ease;
+      background:var(--footer-bg);
+    }
+    header.transparent{ background:rgba(26,26,26,.65); }
+    .nav-center{ display:flex; align-items:center; }
+    .nav-center ul{ display:flex; gap:30px; list-style:none; margin:0; padding:0; }
+    .nav-center a{
+      color:#fff; text-decoration:none; font-weight:600; font-size:14px;
+      display:flex; flex-direction:column; align-items:center; padding:5px; position:relative;
+    }
+    .nav-center a span{ font-size:12px; opacity:.75; font-weight:400; }
+    .header-logo{ margin:0 40px; }
+    .header-logo img{ height:60px; display:block; }
 
-    <!-- Theme Style -->
-    <link rel="stylesheet" href="css/style.css">
-  </head>
-  <body>
-    
-    <header role="banner">
-     
-      <nav class="navbar navbar-expand-md navbar-dark bg-light">
-        <div class="container">
-          <a class="navbar-brand" href="index.html">Alotan</a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
+    /* HERO */
+    .hero-section {
+      margin-top:var(--header-h);
+      height:60vh;
+      background: url('images/about-hero.jpg') center center/cover no-repeat fixed;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; color: #fff; position: relative; overflow: hidden;
+    }
+    .hero-section::after { content:''; position:absolute; inset:0; background:rgba(0,0,0,.55); }
+    .hero-content { position: relative; z-index: 2; }
+    .hero-content h1 { font-size: 3rem; font-weight: 700; }
+    .hero-content h1 span{ color:var(--accent); }
+    .hero-content p { font-size: 1.4rem; margin-top: 10px; }
 
-          <div class="collapse navbar-collapse navbar-light" id="navbarsExample05">
-            <ul class="navbar-nav ml-auto pl-lg-5 pl-0">
-              <li class="nav-item">
-                <a class="nav-link" href="index.html">Home</a>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="hairstyle.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Haircut</a>
-                <div class="dropdown-menu" aria-labelledby="dropdown04">
-                  <a class="dropdown-item" href="hairstyle.html">Crew Cut</a>
-                  <a class="dropdown-item" href="hairstyle.html">Regular Hair Cut</a>
-                  <a class="dropdown-item" href="hairstyle.html">Shampoo + Cut</a>
-                  <a class="dropdown-item" href="hairstyle.html">Beard Trim with Razor</a>
-                  <a class="dropdown-item" href="hairstyle.html">Hair Color</a>
-                </div>
- 
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" href="about.html">About</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="contact.html">Contact</a>
-              </li>
-            </ul>
-            
+    /* SECTION TITLES */
+    .section-title{
+      text-align:center; font-size:2.2rem; font-weight:700;
+      margin-bottom:20px; color:#1a1a1a; position:relative; display:inline-block;
+      opacity:0; transform:translateY(40px);
+      transition:opacity 1s ease, transform 1s ease;
+    }
+    .section-title.in{ opacity:1; transform:translateY(0); }
+    .section-title::after{
+      content:''; display:block; width:60px; height:3px; margin:12px auto 0;
+      background:var(--accent); transform:scaleX(0); transition:transform 1s ease;
+    }
+    .section-title.in::after{ transform:scaleX(1); }
+
+    .content-section{ padding:70px 0; }
+    .content-text{ font-size:1.1rem; line-height:1.8; color:var(--muted); opacity:0; transform:translateY(40px); transition:1s ease; }
+    .content-text.in{ opacity:1; transform:none; }
+
+    .content-section img{
+      border-radius: 12px; width: 100%; height: 100%; object-fit: cover;
+      opacity:0; transform:translateY(40px); transition:1s ease;
+    }
+    .content-section img.in{ opacity:1; transform:none; }
+
+    /* TEAM */
+    .team-card{
+      background:#fff; border-radius:10px;
+      box-shadow:0 6px 18px rgba(0,0,0,.08);
+      padding:15px; text-align:center; transition:.3s;
+      opacity:0;
+    }
+    .team-card img{ width:100%; height:240px; object-fit:cover; border-radius:10px; }
+    .team-card h5{ margin-top:10px; font-weight:600; }
+    .team-card p{ font-size:.95rem; color:#555; }
+
+    /* slide directions */
+    .slide-in-left{ transform:translateX(-120px); }
+    .slide-in-right{ transform:translateX(120px); }
+    .slide-active{ transform:translateX(0)!important; opacity:1!important; }
+
+    /* WAVES */
+    .prefooter-wave{ margin-top:-2px; }
+    .prefooter-wave svg{ display:block; transform:rotate(180deg); }
+    .prefooter-wave path{ fill:var(--footer-bg); }
+
+    /* FOOTER */
+    footer{
+      background:var(--footer-bg); color:#fff; padding:60px 0 28px;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 22 22'%3E%3Ccircle cx='1.5' cy='1.5' r='1' fill='%23ffffff22'/%3E%3C/svg%3E");
+      background-repeat:repeat;
+    }
+    footer h5{ color:#fff; font-weight:600; margin-bottom:14px; }
+    footer a{ color:#e6eef9; text-decoration:none; }
+    footer a:hover{ color:#fff; }
+    .footer-minor{ border-top:1px solid rgba(255,255,255,.28); margin-top:22px; padding-top:14px; text-align:center; font-size:14px; }
+
+    .quick-form input,.quick-form textarea{
+      width:100%; background:#2a2a2a; border:none; color:#fff;
+      padding:12px; margin-bottom:12px; border-radius:6px; font-size:15px;
+    }
+    .quick-form textarea{ min-height:120px; }
+    .quick-form button{
+      background:var(--accent); border:none; color:#fff;
+      padding:10px 20px; border-radius:22px; font-weight:600;
+    }
+
+    /* footer reveal */
+    footer .reveal{
+      opacity:0; transform:translateY(30px);
+      transition:opacity 1s ease, transform 1s ease;
+    }
+    footer .reveal.in{ opacity:1; transform:translateY(0); }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header id="mainHeader">
+    <div class="nav-center">
+      <ul>
+        <li><a href="index.html">Home <span>Main Page</span></a></li>
+        <li><a href="about.html">About Us <span>Find Out More</span></a></li>
+      </ul>
+      <div class="header-logo">
+        <a href="index.html"><img src="images/cds-plastics-logo.png" alt="CDS Plastics"></a>
+      </div>
+      <ul>
+        <li><a href="weavers.html">AcoustiX <span>PET Panels</span></a></li>
+        <li><a href="contact.html">Contact <span>Get in Touch</span></a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <h1>ABOUT <span>CDS PLASTICS</span></h1>
+      <p><span id="typed-text"></span></p>
+    </div>
+  </section>
+
+  <!-- WHO WE ARE -->
+  <section class="content-section">
+    <div class="container text-center">
+      <h2 class="section-title">Who We Are</h2>
+      <div class="row mt-4">
+        <div class="col-md-6">
+          <img src="images/about-story.jpg" alt="About CDS Plastics">
+        </div>
+        <div class="col-md-6 content-text">
+          <p>CDS Plastics has been an industry leader in delivering acoustic solutions that combine innovation and sustainability. Our team ensures that every product not only meets the functional requirements but also elevates the aesthetic appeal of modern workspaces.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUSTAINABILITY -->
+  <section class="content-section bg-light">
+    <div class="container text-center">
+      <h2 class="section-title">Sustainability & Innovation</h2>
+      <div class="row mt-4">
+        <div class="col-md-6 content-text">
+          <p>We prioritize sustainability in every aspect of our business, from sourcing eco-friendly materials to implementing energy-efficient processes. Our innovative designs ensure superior acoustic performance without compromising style.</p>
+        </div>
+        <div class="col-md-6">
+          <img src="images/about-vision.jpg" alt="Sustainability and Innovation">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAMS -->
+  <section class="content-section">
+    <div class="container text-center">
+      <h2 class="section-title">Our Teams</h2>
+      <div class="row mt-4">
+        <div class="col-md-6">
+          <div class="team-card slide-in-left">
+            <img src="images/team-jhb.jpg" alt="Johannesburg Team">
+            <h5>Johannesburg Team</h5>
+            <p>Dedicated professionals serving the Gauteng region with precision and excellence.</p>
           </div>
         </div>
-      </nav>
-    </header>
-    <!-- END header -->
-
-    <section class="site-hero overlay" data-stellar-background-ratio="0.5" style="background-image: url(images/big_image_1.jpg);">
-      <div class="container">
-        <div class="row align-items-center site-hero-inner justify-content-center">
-          <div class="col-md-8 text-center">
-
-            <div class="mb-5 element-animate">
-              <!-- <img src="images/banner_text_1.png" alt="Image placeholder" class="img-md-fluid"> -->
-              <h1 class="mb-4">About Us</h1>
-              <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus, quo!</p>
-            </div>
-
+        <div class="col-md-6">
+          <div class="team-card slide-in-right">
+            <img src="images/team-ct.jpg" alt="Cape Town Team">
+            <h5>Cape Town Team</h5>
+            <p>Innovative minds driving acoustic solutions in the Western Cape and beyond.</p>
           </div>
         </div>
       </div>
-    </section>
-    <!-- END section -->
+    </div>
+  </section>
 
-    
+  <!-- WAVE -->
+  <div class="prefooter-wave wave" aria-hidden="true">
+    <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+      <path d="M985.66,92.83C906.67,72,823.78,31,743,14.19
+               c-82.72-17.34-168.06-16.33-250.45-.39
+               -57.84,11.12-114.27,29.07-172,41.86
+               C199.9,85.19,100.86,105,0,120V0H1200V27.35
+               C1132.19,55.49,1057.52,113.6,985.66,92.83Z"/>
+    </svg>
+  </div>
 
-
-   
- <section class="quick-info element-animate" data-animate-effect="fadeInLeft">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-8 bgcolor">
-            <div class="row">
-              <div class="col-md-4 mb-3">
-                <div class="media">
-                  <div class="mr-3 icon-wrap"><span class="icon ion-ios-telephone"></span></div>
-                  <div class="media-body">
-                    <h5>+1 234 5633 342</h5>
-                    <p>Call us 24/7 we will get back to you ASAP</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4 mb-3">
-                <div class="media">
-                  <div class="mr-3 icon-wrap"><span class="icon ion-location"></span></div>
-                  <div class="media-body">
-                    <h5>249 Division Rad</h5>
-                    <p>Fake st. New York, New York City,  PO 2923 USA</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-4 mb-3">
-                <div class="media">
-                  <div class="mr-3 icon-wrap"><span class="icon ion-android-time"></span></div>
-                  <div class="media-body">
-                    <h5>Daily: 8 am - 10 pm</h5>
-                    <p>Mon-Fri, Sunday <br> Saturday: Closed</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 reveal">
+          <h5>Contact Us</h5>
+          <p><strong>Cape Town</strong><br>Unit 12, Bofors Circle<br>+27 21 535 4242<br>
+            <a href="mailto:sales@cdsplastics.co.za">sales@cdsplastics.co.za</a></p>
+        </div>
+        <div class="col-md-4 reveal">
+          <h5>Quick Message</h5>
+          <form class="quick-form">
+            <input type="text" placeholder="Name">
+            <input type="email" placeholder="Email">
+            <textarea rows="4" placeholder="Message"></textarea>
+            <button type="button">Send</button>
+          </form>
+        </div>
+        <div class="col-md-4 reveal">
+          <h5>Connect</h5>
+          <p>
+            <a href="#" class="p-2"><span class="fa fa-facebook"></span></a>
+            <a href="#" class="p-2"><span class="fa fa-linkedin"></span></a>
+            <a href="#" class="p-2"><span class="fa fa-instagram"></span></a>
+          </p>
         </div>
       </div>
-    </section>
-    <!-- END section -->
-    
+      <div class="footer-minor">&copy; <span id="year"></span> CDS Plastics. All rights reserved.</div>
+    </div>
+  </footer>
 
-    <section class="site-section pb-5">
-      <div class="container">
-        <div class="row mb-5 justify-content-center">
-          <div class="col-md-8 text-center">
-            <h1>Team</h1>
-            <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis quia tempore magni dolore dolorum reprehenderit illum consectetur minima</p>
-          </div>
-        </div>
-        <div class="row element-animate">
-          <div class="col-md-6 video-wrap mb-5">
-            <img src="images/img_5.jpg" alt="Image placeholder" class="img-fluid">
-            <a href="https://vimeo.com/channels/staffpicks/93951774" class="popup-vimeo btn-video"><span class="fa fa-play"></span></a>
-          </div>
-          <div class="col-md-6 pl-md-5">
-            <h3>Jay Ramzee</h3>
-            <p class="lead">Expert Barber</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam facere a excepturi quod impedit rerum ipsum totam incidunt, necessitatibus id veritatis maiores quos saepe dolore commodi magnam fugiat. Incidunt, omnis.</p>
-            <p>Nobis quae eaque facere architecto eligendi, voluptas quasi, blanditiis aperiam possimus inventore quis nam! Cupiditate necessitatibus, voluptatem excepturi placeat exercitationem quos vitae ut vero dolorem, provident sit odio porro facere.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- END section -->
+  <!-- SCRIPTS -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+  <script>
+    // Typed.js
+    var typed = new Typed('#typed-text', {
+      strings: ["Where Sound Meets Design", "Innovation in Every Detail", "Acoustic Solutions for Modern Spaces"],
+      typeSpeed: 50, backSpeed: 25, loop: true
+    });
 
-    <section class="pt-5 pb-5">
-      <div class="container">
-        <div class="row element-animate">
-          <div class="col-md-6 video-wrap mb-5">
-            <img src="images/img_7.jpg" alt="Image placeholder" class="img-fluid">
-            <a href="https://vimeo.com/channels/staffpicks/93951774" class="popup-vimeo btn-video"><span class="fa fa-play"></span></a>
-          </div>
-          <div class="col-md-6 pl-md-5">
-            <h3>Chris Worth</h3>
-            <p class="lead">Expert Barber</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam facere a excepturi quod impedit rerum ipsum totam incidunt, necessitatibus id veritatis maiores quos saepe dolore commodi magnam fugiat. Incidunt, omnis.</p>
-            <p>Nobis quae eaque facere architecto eligendi, voluptas quasi, blanditiis aperiam possimus inventore quis nam! Cupiditate necessitatibus, voluptatem excepturi placeat exercitationem quos vitae ut vero dolorem, provident sit odio porro facere.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- END section -->
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-    <section class="pt-5 pb-5">
-      <div class="container">
-        <div class="row element-animate">
-          <div class="col-md-6 video-wrap mb-5">
-            <img src="images/img_8.jpg" alt="Image placeholder" class="img-fluid">
-            <a href="https://vimeo.com/channels/staffpicks/93951774" class="popup-vimeo btn-video"><span class="fa fa-play"></span></a>
-          </div>
-          <div class="col-md-6 pl-md-5">
-            <h3>Dan Fisher</h3>
-            <p class="lead">Expert Barber</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quam facere a excepturi quod impedit rerum ipsum totam incidunt, necessitatibus id veritatis maiores quos saepe dolore commodi magnam fugiat. Incidunt, omnis.</p>
-            <p>Nobis quae eaque facere architecto eligendi, voluptas quasi, blanditiis aperiam possimus inventore quis nam! Cupiditate necessitatibus, voluptatem excepturi placeat exercitationem quos vitae ut vero dolorem, provident sit odio porro facere.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- END section -->
+    // Header transparency
+    const header = document.getElementById('mainHeader');
+    const setHeader = () => header.classList.toggle('transparent', window.scrollY > 60);
+    setHeader(); window.addEventListener('scroll', setHeader);
 
-   
-    
-   
-    <footer class="site-footer">
-      <div class="container">
-        <div class="row mb-5">
-          <div class="col-md-4">
-            <h3 class="mb-4">About</h3>
-            <p class="mb-4">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, quod!</p>
-            <ul class="list-unstyled ">
-              <li class="d-flex"><span class="mr-3"><span class="icon ion-ios-location"></span></span><span class="">34 Street Name, City Name Here, United States</span></li>
-              <li class="d-flex"><span class="mr-3"><span class="icon ion-ios-telephone"></span></span><span class="">+1 242 4942 290</span></li>
-              <li class="d-flex"><span class="mr-3"><span class="icon ion-email"></span></span><span class="">info@yourdomain.com</span></li>
-            </ul>
-          </div>
-          <div class="col-md-2">
-            <h3 class="mb-4">Links</h3>
-            <ul class="list-unstyled ">
-              <li><a href="#">About</a></li>
-              <li><a href="#">Hairstyle</a></li>
-              <li><a href="#">Contact</a></li>
-            </ul>
-          </div>
-          <div class="col-md-3">
-            <h3 class="mb-4">Latest Blog</h3>
-            <ul class="list-unstyled blog-entry-footer">
-              <li><a href="#">
-                <span class="post-meta">March 20, 2018</span>
-                <h3>7 Best Destination in The World</h3></a>
-              </li>
-              <li><a href="#">
-                <span class="post-meta">March 20, 2018</span>
-                <h3>4 Hour Work Week And The Rest Is Travel</h3></a>
-              </li>
-              <li><a href="#">
-                <span class="post-meta">March 20, 2018</span>
-                <h3>Why You Should Travel Today</h3></a>
-              </li>
-            </ul>
-          </div>
-          <div class="col-md-3">
-            <h3>Connect</h3>
-            <p>
-              <a href="#" class="p-2"><span class="fa fa-facebook"></span></a>
-              <a href="#" class="p-2"><span class="fa fa-twitter"></span></a>
-              <a href="#" class="p-2"><span class="fa fa-instagram"></span></a>
-            </p>
-          </div>
-        </div>
-        <div class="row justify-content-center">
-          <div class="col-md-7 text-center">
-            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-          </div>
-        </div>
-      </div>
-    </footer>
-    <!-- END footer -->
-    
-    <!-- loader -->
-    <div id="loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#f4b214"/></svg></div>
-
-    <script src="js/jquery-3.2.1.min.js"></script>
-    <script src="js/jquery-migrate-3.0.0.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/jquery.waypoints.min.js"></script>
-    <script src="js/jquery.stellar.min.js"></script>
-
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/magnific-popup-options.js"></script>
-
-    <script src="js/main.js"></script>
-  </body>
+    // Scroll reveal
+    const revealables = document.querySelectorAll(
+      '.section-title, .content-text, .content-section img, .team-card, footer .reveal'
+    );
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          if(e.target.classList.contains('slide-in-left') || e.target.classList.contains('slide-in-right')){
+            e.target.classList.add('slide-active');
+          } else {
+            e.target.classList.add('in');
+          }
+          io.unobserve(e.target);
+        }
+      });
+    }, {threshold:.35});
+    revealables.forEach(el => io.observe(el));
+  </script>
+</body>
 </html>
