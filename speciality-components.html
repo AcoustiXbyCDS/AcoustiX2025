@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <title>Speciality Components | CDS Plastics</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Fonts & CSS -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,600,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <style>
+    :root{
+      --header-h: 90px;
+      --page-bg: #f5f5f5;
+      --page-dot: #e8e8e8;
+      --text: #222;
+      --muted: #555;
+      --accent: #0066cc;
+      --accent-600:#004a99;
+      --footer-bg:#1a1a1a;
+    }
+    body{
+      margin:0; font-family:'Poppins',sans-serif; color:var(--text);
+      background:var(--page-bg);
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 22 22'%3E%3Ccircle cx='1.5' cy='1.5' r='1' fill='%23e8e8e8'/%3E%3C/svg%3E");
+      background-repeat:repeat;
+    }
+    html{scroll-behavior:smooth;}
+
+    /* HEADER (same as homepage) */
+    header{
+      position:fixed; inset:0 0 auto 0; height:var(--header-h);
+      display:flex; justify-content:center; align-items:center;
+      z-index:1000; transition:background .35s ease;
+      background:var(--footer-bg);
+    }
+    header.transparent{ background:rgba(26,26,26,.65); }
+    .nav-center{ display:flex; align-items:center; justify-content:space-between; width:100%; max-width:1200px; padding:0 20px; }
+    .nav-left, .nav-right{ display:flex; gap:30px; list-style:none; margin:0; padding:0; flex:1; }
+    .nav-left{ justify-content:flex-end; }
+    .nav-right{ justify-content:flex-start; }
+    .nav-center a{ color:#fff; text-decoration:none; font-weight:600; font-size:14px; display:flex; flex-direction:column; align-items:center; padding:5px; position:relative; }
+    .nav-center a span{ font-size:12px; opacity:.75; font-weight:400; }
+    .nav-center a::after{ content:''; position:absolute; left:0; bottom:-4px; height:2px; width:0; background:var(--accent); transition:.25s; }
+    .nav-center a:hover::after,.nav-center a.active::after{ width:100%; }
+    .header-logo{ flex-shrink:0; margin:0 40px; display:flex; justify-content:center; }
+    .header-logo img{ height:60px; display:block; }
+
+    /* HERO */
+    .hero-section{
+      margin-top:var(--header-h);
+      height:50vh;
+      background:url('images/speciality-hero.jpg') center/cover no-repeat;
+      display:flex; align-items:center; justify-content:center;
+      text-align:center; color:#fff; position:relative;
+    }
+    .hero-section::after{ content:''; position:absolute; inset:0; background:rgba(0,0,0,.55); }
+    .hero-content{ position:relative; z-index:2; }
+    .hero-content h1{ font-size:3rem; font-weight:700; }
+    .hero-content p{ font-size:1.2rem; margin-top:10px; }
+
+    /* Breadcrumbs */
+    .breadcrumbs{ text-align:center; margin:20px 0; font-size:14px; color:var(--muted); }
+    .breadcrumbs a{ color:var(--accent); text-decoration:none; }
+    .breadcrumbs a:hover{ text-decoration:underline; }
+
+    /* Section */
+    section{ padding:70px 0; }
+    .section-title{text-align:center; font-size:2.2rem; font-weight:700; margin-bottom:20px; color:#1a1a1a; }
+    .section-intro{text-align:center; max-width:700px; margin:0 auto 50px; color:var(--muted); }
+
+    /* Component rows */
+    .component-row{ display:flex; align-items:center; gap:40px; margin-bottom:80px; flex-wrap:wrap; }
+    .component-row:nth-child(even){ flex-direction:row-reverse; }
+    .component-row img{ width:100%; max-width:500px; border-radius:12px; box-shadow:0 8px 20px rgba(0,0,0,.08); }
+    .component-text{ flex:1; }
+    .component-text h3{ font-size:28px; color:var(--accent); font-weight:700; margin-bottom:15px; }
+    .component-text p{ color:var(--muted); margin-bottom:20px; }
+    .btn-card{ background:var(--accent); color:#fff; text-decoration:none; padding:12px 26px; border-radius:30px; font-weight:600; display:inline-block; }
+    .btn-card:hover{ background:var(--accent-600); }
+
+    /* Wave footer */
+    .prefooter-wave{ margin-top:-2px; }
+    .prefooter-wave svg{ display:block; transform:rotate(180deg); }
+    .prefooter-wave path{ fill:var(--footer-bg); }
+
+    /* FOOTER (same as homepage) */
+    footer{ background:var(--footer-bg); color:#fff; padding:60px 0 28px;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 22 22'%3E%3Ccircle cx='1.5' cy='1.5' r='1' fill='%23ffffff22'/%3E%3C/svg%3E"); background-repeat:repeat; }
+    footer h5{ color:#fff; font-weight:600; margin-bottom:14px; }
+    footer a{ color:#e6eef9; text-decoration:none; }
+    footer a:hover{ color:#fff; }
+    .footer-minor{ border-top:1px solid rgba(255,255,255,.28); margin-top:22px; padding-top:14px; text-align:center; font-size:14px; }
+    .quick-form input,.quick-form textarea{ width:100%; background:#2a2a2a; border:none; color:#fff; padding:10px; margin-bottom:10px; border-radius:6px; }
+    .quick-form button{ background:var(--accent); border:none; color:#fff; padding:10px 20px; border-radius:22px; font-weight:600; }
+
+    /* Reveal Animations */
+    .reveal{opacity:0; transform:translateY(40px); transition:opacity 1s ease,transform 1s ease;}
+    .reveal.in{opacity:1; transform:none;}
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="mainHeader">
+  <div class="nav-center">
+    <ul class="nav-left">
+      <li><a href="index.html">Home <span>Main Page</span></a></li>
+      <li><a href="about.html">About Us <span>Find Out More</span></a></li>
+      <li><a href="speciality-components.html" class="active">Speciality <span>Components</span></a></li>
+      <li><a href="weavers.html">AcoustiX <span>PET Panels</span></a></li>
+    </ul>
+    <div class="header-logo">
+      <a href="index.html"><img src="images/cds-plastics-logo.png" alt="CDS Plastics"></a>
+    </div>
+    <ul class="nav-right">
+      <li><a href="comfort-range.html">Comfort <span>Range</span></a></li>
+      <li><a href="gallery.html">Gallery <span>Showcase</span></a></li>
+      <li><a href="faq.html">FAQ <span>Answers</span></a></li>
+      <li><a href="contact.html">Contact <span>Get in Touch</span></a></li>
+    </ul>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero-section">
+  <div class="hero-content">
+    <h1>Speciality Components</h1>
+    <p>Precision-engineered solutions designed for performance and durability</p>
+  </div>
+</section>
+
+<!-- Breadcrumbs -->
+<div class="breadcrumbs">
+  <a href="index.html">Home</a> > Speciality Components
+</div>
+
+<!-- INTRO -->
+<section>
+  <div class="container">
+    <h2 class="section-title reveal">Explore Our Range</h2>
+    <p class="section-intro reveal">Our speciality components are engineered to deliver reliability, efficiency, and design flexibility across modern workspaces. Explore our product groups below.</p>
+
+    <!-- COMPONENT 1 -->
+    <div class="component-row reveal">
+      <img src="images/feature-monitor-arms.jpg" alt="Agilis Monitor Arms">
+      <div class="component-text">
+        <h3>Agilis Monitor Arms</h3>
+        <p>Flexible, ergonomic solutions for monitor placement. Designed for comfort, productivity, and durability.</p>
+        <a href="monitor-arms.html" class="btn-card">View More</a>
+      </div>
+    </div>
+
+    <!-- COMPONENT 2 -->
+    <div class="component-row reveal">
+      <img src="images/feature-drawers.jpg" alt="Drawer Systems">
+      <div class="component-text">
+        <h3>Drawer Systems</h3>
+        <p>Robust and practical storage systems, made to maximize office efficiency and keep workspaces organized.</p>
+        <a href="drawer-systems.html" class="btn-card">View More</a>
+      </div>
+    </div>
+
+    <!-- COMPONENT 3 -->
+    <div class="component-row reveal">
+      <img src="images/feature-levellers.jpg" alt="Levellers & Brackets">
+      <div class="component-text">
+        <h3>Levellers & Brackets</h3>
+        <p>Strong and adaptable components that ensure stability and precision in furniture installations.</p>
+        <a href="levellers.html" class="btn-card">View More</a>
+      </div>
+    </div>
+
+    <!-- COMPONENT 4 -->
+    <div class="component-row reveal">
+      <img src="images/feature-cable.jpg" alt="Cable Management">
+      <div class="component-text">
+        <h3>Cable Management</h3>
+        <p>Innovative cable routing solutions that promote neat, safe, and functional office setups.</p>
+        <a href="cable-management.html" class="btn-card">View More</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WAVE -->
+<div class="prefooter-wave wave" aria-hidden="true">
+  <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+    <path d="M985.66,92.83C906.67,72,823.78,31,743,14.19
+             c-82.72-17.34-168.06-16.33-250.45-.39
+             -57.84,11.12-114.27,29.07-172,41.86
+             C199.9,85.19,100.86,105,0,120V0H1200V27.35
+             C1132.19,55.49,1057.52,113.6,985.66,92.83Z"/>
+  </svg>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 reveal">
+        <h5>Contact Us:</h5>
+        <p><i class="fa fa-envelope"></i> 
+          <strong>Email:</strong> <a href="mailto:sales@cdsplastics.co.za">sales@cdsplastics.co.za</a>
+        </p>
+        <p><i class="fa fa-phone"></i> 
+          <strong>Cape Town:</strong> +27 21 535 4242
+        </p>
+        <p><i class="fa fa-map-marker"></i> 
+          <strong>Address:</strong><br>
+          Unit 12, Bofors Circle, Cape Town
+        </p>
+      </div>
+      <div class="col-md-4 reveal">
+        <h5>Quick Message:</h5>
+        <form class="quick-form">
+          <input type="text" placeholder="Name">
+          <input type="email" placeholder="Email">
+          <textarea rows="4" placeholder="Message"></textarea>
+          <button type="button">Send</button>
+        </form>
+      </div>
+      <div class="col-md-4 reveal">
+        <h5>Site Map:</h5>
+        <ul style="list-style:none; padding:0; margin:0;">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="speciality-components.html">Speciality</a></li>
+          <li><a href="weavers.html">AcoustiX</a></li>
+          <li><a href="comfort-range.html">Comfort Range</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="socials" style="margin-top:15px;">
+          <a href="#"><i class="fa fa-facebook"></i></a>
+          <a href="#"><i class="fa fa-linkedin"></i></a>
+          <a href="#"><i class="fa fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-minor">&copy; <span id="year"></span> CDS Plastics. All rights reserved.</div>
+  </div>
+</footer>
+
+<!-- JS -->
+<script>
+  // Year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Header transparency
+  const header = document.getElementById('mainHeader');
+  const setHeader = () => header.classList.toggle('transparent', window.scrollY > 60);
+  setHeader(); window.addEventListener('scroll', setHeader);
+
+  // Reveal on scroll
+  const revealables = document.querySelectorAll('.reveal, .component-row');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, {threshold:.35});
+  revealables.forEach(el => io.observe(el));
+</script>
+</body>
+</html>

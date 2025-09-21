@@ -30,25 +30,87 @@
       scroll-padding-top:var(--header-h);
     }
 
-    /* HEADER */
-    header{
-      position:fixed; inset:0 0 auto 0; height:var(--header-h);
-      display:flex; justify-content:center; align-items:center;
-      z-index:1000; transition:background .35s ease;
-      background:var(--footer-bg);
-    }
-    header.transparent{ background:rgba(26,26,26,.65); }
-    .nav-center{ display:flex; align-items:center; }
-    .nav-center ul{ display:flex; gap:30px; list-style:none; margin:0; padding:0; }
-    .nav-center a{
-      color:#fff; text-decoration:none; font-weight:600; font-size:14px;
-      display:flex; flex-direction:column; align-items:center; padding:5px; position:relative;
-    }
-    .nav-center a span{ font-size:12px; opacity:.75; font-weight:400; }
-    .nav-center a::after{ content:''; position:absolute; left:0; bottom:-4px; height:2px; width:0; background:var(--accent); transition:.25s; }
-    .nav-center a:hover::after{ width:100%; }
-    .header-logo{ margin:0 40px; }
-    .header-logo img{ height:60px; display:block; }
+
+   /* HEADER */
+header {
+  position: fixed; inset: 0 0 auto 0; height: var(--header-h);
+  display: flex; justify-content: center; align-items: center;
+  z-index: 1000; transition: background .35s ease;
+  background: var(--footer-bg);
+}
+header.transparent { background: rgba(26,26,26,.65); }
+
+.nav-center {
+  display: flex; align-items: center; justify-content: space-between;
+  width: 100%; max-width: 1200px; padding: 0 20px;
+}
+
+.nav-left, .nav-right {
+  display: flex; gap: 30px; list-style: none; margin: 0; padding: 0;
+  flex: 1;
+}
+.nav-left { justify-content: flex-end; }
+.nav-right { justify-content: flex-start; }
+
+.nav-center a {
+  color: #fff; text-decoration: none; font-weight: 600; font-size: 14px;
+  display: flex; flex-direction: column; align-items: center;
+  padding: 5px; position: relative;
+}
+.nav-center a span { font-size: 12px; opacity: .75; font-weight: 400; }
+.nav-center a::after {
+  content: ''; position: absolute; left: 0; bottom: -4px;
+  height: 2px; width: 0; background: var(--accent); transition: .25s;
+}
+.nav-center a:hover::after,
+.nav-center a.active::after { width: 100%; }
+
+.header-logo {
+  flex-shrink: 0; margin: 0 40px; display: flex; justify-content: center;
+}
+.header-logo img { height: 60px; display: block; }
+/* Default desktop header stays as is (from before) */
+
+/* Toggle button hidden on desktop */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+/* Mobile styles */
+@media (max-width: 900px) {
+  .nav-center {
+    justify-content: space-between;
+  }
+
+  .nav-left,
+  .nav-right {
+    display: none; /* hide by default */
+    flex-direction: column;
+    background: var(--footer-bg);
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+  }
+
+  .nav-left.active,
+  .nav-right.active {
+    display: flex; /* show when toggled */
+  }
+
+  .header-logo {
+    margin: 0 auto;
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+}
+
 
     /* HERO SLIDESHOW */
     .hero{
@@ -143,22 +205,35 @@
 </head>
 <body>
 
-  <!-- HEADER -->
   <header id="mainHeader">
-    <div class="nav-center">
-      <ul>
-        <li><a href="index.html">Home <span>Main Page</span></a></li>
-        <li><a href="about.html">About Us <span>Find Out More</span></a></li>
-      </ul>
-      <div class="header-logo">
-        <a href="index.html"><img src="images/cds-plastics-logo.png" alt="CDS Plastics"></a>
-      </div>
-      <ul>
-        <li><a href="weavers.html">AcoustiX <span>PET Panels</span></a></li>
-        <li><a href="contact.html">Contact <span>Get in Touch</span></a></li>
-      </ul>
+  <div class="nav-center">
+    <!-- Left side -->
+    <ul class="nav-left">
+      <li><a href="index.html" class="active">Home <span>Main Page</span></a></li>
+      <li><a href="about.html">About Us <span>Find Out More</span></a></li>
+      <li><a href="speciality-components.html">Speciality <span>Components</span></a></li>
+      <li><a href="weavers.html">AcoustiX <span>PET Panels</span></a></li>
+    </ul>
+
+    <!-- Center logo -->
+    <div class="header-logo">
+      <a href="index.html"><img src="images/cds-plastics-logo.png" alt="CDS Plastics"></a>
     </div>
-  </header>
+
+    <!-- Right side -->
+    <ul class="nav-right">
+      <li><a href="comfort-range.html">Comfort <span>Range</span></a></li>
+      <li><a href="gallery.html">Gallery <span>Showcase</span></a></li>
+      <li><a href="faq.html">FAQ <span>Answers</span></a></li>
+      <li><a href="contact.html">Contact <span>Get in Touch</span></a></li>
+    </ul>
+
+    <!-- Mobile toggle -->
+    <button class="nav-toggle" aria-label="Toggle menu"><i class="fa fa-bars"></i></button>
+  </div>
+</header>
+
+
 
   <!-- HERO SLIDESHOW -->
   <section class="hero">
@@ -291,7 +366,11 @@
           <ul style="list-style:none; padding:0; margin:0;">
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About</a></li>
+            <li><a href="speciality-components.html">Speciality</a></li>
             <li><a href="weavers.html">AcoustiX</a></li>
+            <li><a href="comfort-range.html">Comfort Range</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="faq.html">FAQ</a></li>
             <li><a href="contact.html">Contact</a></li>
           </ul>
           <div class="socials" style="margin-top:15px;">
@@ -340,5 +419,17 @@
       slides[current].classList.add('active');
     },4000);
   </script>
+  <script>
+  // Mobile nav toggle
+  const navToggle = document.querySelector('.nav-toggle');
+  const navLeft = document.querySelector('.nav-left');
+  const navRight = document.querySelector('.nav-right');
+
+  navToggle.addEventListener('click', () => {
+    navLeft.classList.toggle('active');
+    navRight.classList.toggle('active');
+  });
+</script>
+
 </body>
 </html>
