@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CDS Plastics | Contact Us</title>
+
+  <!-- Fonts & libs -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,600,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="style1.css">
+
+  <style>
+    :root {
+      --header-h: 60px;
+      --page-bg: #f5f5f5;
+      --page-dot: #e8e8e8;
+      --text: #222;
+      --muted: #555;
+      --accent: #0066cc;
+      --accent-600: #004a99;
+      --footer-bg: #1a1a1a;
+    }
+
+    body {
+      margin:0; font-family:'Poppins',sans-serif; color:var(--text);
+      background:var(--page-bg);
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 22 22'%3E%3Ccircle cx='1.5' cy='1.5' r='1' fill='%23e8e8e8'/%3E%3C/svg%3E");
+      background-repeat:repeat;
+      animation:bgShift 60s linear infinite;
+      scroll-padding-top:var(--header-h);
+    }
+    @keyframes bgShift {
+      0% { background-position: 0 0; }
+      100% { background-position: 20px 20px; }
+    }
+
+    /* HEADER */
+    header {
+      position:fixed; inset:0 0 auto 0; height:var(--header-h);
+      display:flex; justify-content:center; align-items:center;
+      z-index:1000; transition:background .35s ease;
+      background:var(--footer-bg);
+    }
+    header.transparent { background:rgba(26,26,26,.65); }
+
+    .nav-center{ display:flex; align-items:center; }
+    .nav-center ul{ display:flex; gap:30px; list-style:none; margin:0; padding:0; }
+    .nav-center a{ color:#fff; text-decoration:none; font-weight:600; font-size:14px; display:flex; flex-direction:column; align-items:center; }
+    .nav-center a span{ font-size:12px; opacity:.75; font-weight:400; }
+    .header-logo{ margin:0 40px; }
+    .header-logo img{ height:60px; display:block; animation:spin-3d 6s infinite linear; }
+
+    @keyframes spin-3d { 0%{transform:rotateY(0deg);} 100%{transform:rotateY(360deg);} }
+
+    /* HERO */
+    .hero {
+      margin-top:var(--header-h);
+      height:40vh; display:flex; justify-content:center; align-items:center;
+      background:url('images/hero2.jpg') center/cover no-repeat; 
+      position:relative; text-align:center; color:#fff;
+    }
+    .hero::before{
+      content:''; position:absolute; inset:0;
+      background:linear-gradient(135deg, rgba(0,70,140,.75), rgba(60,60,60,.75));
+    }
+    .hero h1{ position:relative; font-size:clamp(28px,6vw,64px); z-index:2; animation:fadeUp 1.2s ease; }
+
+    @keyframes fadeUp {
+      from {opacity:0; transform:translateY(40px);}
+      to {opacity:1; transform:translateY(0);}
+    }
+
+    /* CONTACT SECTION */
+    .contact-wrapper {
+      max-width: 1100px;
+      margin: 60px auto;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(6px);
+      border-radius: 14px;
+      box-shadow: 0 16px 42px rgba(0, 0, 0, .12);
+      overflow: hidden;
+      transform: translateY(40px);
+      opacity: 0;
+      transition: all 0.9s ease;
+    }
+    .contact-wrapper.in-view { transform: translateY(0); opacity: 1; }
+
+    /* Updated Contact Tab */
+    .contact-tab {
+      background: linear-gradient(135deg, #444, #666);
+      color: #fff;
+      font-weight: 600;
+      padding: 16px 24px;
+      font-size: 20px;
+      border-radius: 14px 14px 0 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .contact-box { display:flex; flex-wrap:wrap; }
+    .contact-left, .contact-right {
+      flex:1; min-width:300px; padding:40px;
+      transition: all 0.8s ease;
+    }
+    .contact-left { background:#f3f3f3; border-right:1px solid #eee; transform:translateX(-60px); opacity:0; }
+    .contact-right { transform:translateX(60px); opacity:0; }
+    .contact-left.in, .contact-right.in { transform:translateX(0); opacity:1; }
+
+    .contact-left h3, .contact-right h3 {
+      font-weight:700; margin-bottom:20px; color:var(--accent);
+    }
+    .contact-left p {
+      margin:12px 0; color:var(--muted); font-size:15px; display:flex; align-items:center;
+    }
+    .icon-circle {
+      width:32px; height:32px; border-radius:50%; background:var(--accent);
+      color:#fff; display:flex; align-items:center; justify-content:center;
+      margin-right:10px; font-size:14px; flex-shrink:0;
+    }
+    .social-links a {
+      margin-right:12px; font-size:20px; color:var(--accent); transition:color 0.2s ease;
+    }
+    .social-links a:hover { color:var(--accent-600); }
+
+    .contact-right input, .contact-right textarea {
+      width:100%; padding:12px; margin-bottom:14px; border:1px solid #ddd; border-radius:6px; font-size:15px; transition:all 0.25s ease;
+    }
+    .contact-right input:focus, .contact-right textarea:focus {
+      border-color:var(--accent); box-shadow:0 0 5px rgba(0, 102, 204, 0.25); outline:none;
+    }
+    .contact-right button {
+      background:var(--accent); color:#fff; border:none; padding:12px 30px; border-radius:30px; font-weight:600; transition:all 0.3s ease;
+    }
+    .contact-right button:hover {
+      background:var(--accent-600); transform:translateY(-2px); box-shadow:0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    /* MAP */
+    .map-container {
+      transform: translateY(60px);
+      opacity: 0;
+      transition: all 0.9s ease;
+    }
+    .map-container.in-view {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    .map-container iframe { width:100%; height:400px; border:0; display:block; }
+
+    /* FOOTER */
+    footer{ background:var(--footer-bg); color:#fff; padding:60px 0 28px;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 22 22'%3E%3Ccircle cx='1.5' cy='1.5' r='1' fill='%23ffffff22'/%3E%3C/svg%3E"); }
+    .footer-minor{ border-top:1px solid rgba(255,255,255,.28); margin-top:22px; padding-top:14px; text-align:center; font-size:14px; }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header id="mainHeader">
+    <div class="nav-center">
+      <ul class="nav-left">
+        <li><a href="index.html">Home <span>Main Page</span></a></li>
+        <li><a href="about.html">About Us <span>Find Out More</span></a></li>
+        <li><a href="speciality-components.html">Speciality <span>Components</span></a></li>
+        <li><a href="weavers.html">AcoustiX <span>PET Panels</span></a></li>
+      </ul>
+      <div class="header-logo">
+        <a href="index.html"><img src="images/cds-plastics-logo.png" alt="CDS Plastics"></a>
+      </div>
+      <ul class="nav-right">
+        <li><a href="comfort-range.html">Comfort <span>Range</span></a></li>
+        <li><a href="gallery.html">Gallery <span>Showcase</span></a></li>
+        <li><a href="faq.html">FAQ <span>Answers</span></a></li>
+        <li><a href="contact.html" class="active">Contact <span>Get in Touch</span></a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1>Contact Us</h1>
+  </section>
+
+  <!-- CONTACT SECTION -->
+  <div class="contact-wrapper">
+    <div class="contact-tab">Contact Information</div>
+    <div class="contact-box">
+      <!-- Left side -->
+      <div class="contact-left">
+        <h3>Get in Touch</h3>
+        <p><span class="icon-circle"><i class="fa fa-envelope"></i></span> sales@cdsplastics.co.za</p>
+        <p><span class="icon-circle"><i class="fa fa-phone"></i></span> +27 21 535 4242 (Cape Town Office)</p>
+        <p><span class="icon-circle"><i class="fa fa-map-marker"></i></span> Unit 12, Bofors Circle, Cape Town</p>
+        <h4 style="margin-top:25px;">Follow Us</h4>
+        <div class="social-links">
+          <a href="#"><i class="fa fa-facebook"></i></a>
+          <a href="#"><i class="fa fa-linkedin"></i></a>
+          <a href="#"><i class="fa fa-instagram"></i></a>
+        </div>
+      </div>
+      <!-- Right side -->
+      <div class="contact-right">
+        <h3>Message Us</h3>
+        <form>
+          <div class="row">
+            <div class="col-md-6"><input type="text" placeholder="Name"></div>
+            <div class="col-md-6"><input type="text" placeholder="Phone"></div>
+          </div>
+          <input type="email" placeholder="Email Address">
+          <textarea placeholder="Message" rows="5"></textarea>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAP -->
+  <div class="map-container">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3310.78152728029!2d18.559!3d-33.919!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1dcc5d123456789%3A0xabcdef!2sUnit%2012%2C%20Bofors%20Circle%2C%20Cape%20Town!5e0!3m2!1sen!2sza!4v1695560000000" allowfullscreen="" loading="lazy"></iframe>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-minor">&copy; <span id="year"></span> CDS Plastics. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Header transparency
+    const header = document.getElementById('mainHeader');
+    const setHeader = () => header.classList.toggle('transparent', window.scrollY > 60);
+    setHeader(); window.addEventListener('scroll', setHeader);
+
+    // reveal animations
+    const wrapper = document.querySelector('.contact-wrapper');
+    const leftPart = document.querySelector('.contact-left');
+    const rightPart = document.querySelector('.contact-right');
+    const mapBox = document.querySelector('.map-container');
+
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(ent => {
+        if (ent.isIntersecting) {
+          if(ent.target.classList.contains('contact-wrapper')){
+            wrapper.classList.add('in-view');
+            leftPart.classList.add('in');
+            rightPart.classList.add('in');
+          }
+          if(ent.target.classList.contains('map-container')){
+            mapBox.classList.add('in-view');
+          }
+          io.unobserve(ent.target);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    io.observe(wrapper);
+    io.observe(mapBox);
+  </script>
+</body>
+</html>
