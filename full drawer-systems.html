@@ -164,6 +164,47 @@
       .hero-content h1 { font-size:2rem; }
     }
   </style>
+  
+    <style>
+    .coin {
+	 margin-top: 50px;
+      width: 130px;
+	  height: 100px;
+      display: block;
+      position: relative;
+      transform-style: preserve-3d;
+      animation: flip 8s linear infinite; /* continuous spin */
+    }
+
+    .side {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden; /* hides the back until rotated */
+    }
+
+    .front {
+      transform: rotateY(0deg);
+    }
+
+    .back {
+      transform: rotateY(180deg);
+    }
+
+    .side img {
+      width: 60%;
+      height: 40%;
+      object-fit: contain;
+    }
+
+
+    @keyframes flip {
+      0%   { transform: rotateY(0deg); }
+      50%  { transform: rotateY(180deg); }
+      100% { transform: rotateY(360deg); }
+    }
+  </style>  
+  
 </head>
 <body>
 
@@ -175,9 +216,11 @@
         <li><a href="about.html">About Us <span>Find Out More</span></a></li>
         <li><a href="speciality-components.html" class="active">Speciality <span>Components</span></a></li>
         <li><a href="weavers.html">AcoustiX <span>PET Panels</span></a></li>
-      </ul>
       <div class="header-logo">
-        <a href="index.html"><img src="images/cds-plastics-logo.png" alt="CDS Plastics"></a>
+			<div class="coin">
+				<div class="side front"><img src="images/cds-plastics-logo.png" alt="CDS Plastics"></div>
+				<div class="side back"><img src="images/PNG.png" alt="CDS Plastics"></div>
+			</div>
       </div>
       <ul class="nav-right">
         <li><a href="comfort-range.html">Comfort <span>Range</span></a></li>
