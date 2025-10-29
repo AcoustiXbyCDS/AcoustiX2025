@@ -11,7 +11,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <style>
-    /* Make box model predictable (prevents padding causing wrapping) */
     *, *::before, *::after { box-sizing: border-box; }
 
     :root{
@@ -71,56 +70,33 @@
     .hero-content h1{ font-size:3rem; font-weight:700; margin-bottom:15px; }
     .hero-content p{ font-size:1.2rem; max-width:700px; margin:0 auto; }
 
-    /* SECTION TITLE (centered) */
+    /* SECTION TITLE */
     .section-title{
-      text-align:center;
-      font-size:2.2rem;
-      font-weight:700;
-      margin-bottom:50px; /* extra space below title */
-      color:#1a1a1a;
-      position:relative;
-      display:block;
-      width:100%;
+      text-align:center; font-size:2.2rem; font-weight:700;
+      margin-bottom:50px; color:#1a1a1a; position:relative; display:block; width:100%;
     }
     .section-title::after{
       content:''; display:block; width:80px; height:3px; background:var(--accent);
       margin:12px auto 0; border-radius:2px;
     }
-
     section{ padding:70px 0; }
 
     /* Fade-in reusable */
     .fadein{ opacity:0; transform:translateY(30px); transition:opacity .8s ease, transform .8s ease; }
     .fadein.in{ opacity:1; transform:none; }
 
-    /* PRODUCT CARDS
-       Keep natural flow, vertical spacing, and ensure columns don't wrap unexpectedly */
-    .row.g-4 {
-      /* only vertical gap required — let Bootstrap handle horizontal gutters */
-      row-gap: 60px;
-    }
-
-    /* Ensure columns behave well and let product-card fill the column */
-    .col-md-4 {
-      display: flex;
-    }
+    /* PRODUCT CARDS */
+    .row.g-4 { row-gap: 60px; }
+    .col-md-4 { display: flex; }
     .product-card{
       background:#fff; border-radius:12px; overflow:hidden;
       box-shadow:0 6px 20px rgba(0,0,0,.08);
       transition:transform .25s ease, box-shadow .25s ease;
       height:100%; display:flex; flex-direction:column;
-      width:100%;
     }
     .product-card:hover{ transform:translateY(-6px); box-shadow:0 8px 24px rgba(0,0,0,.12); }
-
-    /* image is block-level and contained */
-    .product-card img{
-      width:100%; display:block; height:200px; object-fit:cover;
-    }
-
-    .product-card-body{
-      padding:20px; flex:1;
-    }
+    .product-card img{ width:100%; display:block; height:200px; object-fit:cover; }
+    .product-card-body{ padding:20px; flex:1; }
     .product-card h4{ font-weight:700; margin-bottom:12px; color:var(--accent); }
     .product-card p{ font-size:0.95rem; color:var(--muted); line-height:1.6; margin-bottom:0; }
 
@@ -142,26 +118,34 @@
       background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 22 22'%3E%3Ccircle cx='1.5' cy='1.5' r='1' fill='%23ffffff22'/%3E%3C/svg%3E");
       background-repeat:repeat;
     }
-    footer h5{ color:#fff; font-weight:600; margin-bottom:14px; }
-    footer a{ color:#e6eef9; text-decoration:none; }
+    footer h5{ color:#fff; font-weight:600; margin-bottom:18px; }
+    footer a{ color:#e6eef9; text-decoration:none; transition:.25s; }
     footer a:hover{ color:#fff; }
-    .footer-minor{ border-top:1px solid rgba(255,255,255,.28); margin-top:22px; padding-top:14px; text-align:center; font-size:14px; }
+    footer .col-md-4{ margin-bottom:30px; }
+    .footer-minor{ border-top:1px solid rgba(255,255,255,.28); margin-top:30px; padding-top:16px; text-align:center; font-size:14px; }
     .quick-form input,.quick-form textarea{
       width:100%; background:#2a2a2a; border:none; color:#fff;
-      padding:10px; margin-bottom:10px; border-radius:6px;
+      padding:12px; margin-bottom:12px; border-radius:6px; font-size:14px;
     }
+    .quick-form textarea{ resize:none; }
     .quick-form button{
       background:var(--accent); border:none; color:#fff;
-      padding:10px 20px; border-radius:22px; font-weight:600;
+      padding:12px 20px; border-radius:22px; font-weight:600; cursor:pointer;
+      transition:background .25s;
     }
+    .quick-form button:hover{ background:#0055aa; }
+    .socials a{
+      display:inline-block; width:34px; height:34px; line-height:34px;
+      border-radius:50%; background:#2a2a2a; text-align:center;
+      margin-right:8px; color:#fff; transition:all .25s;
+    }
+    .socials a:hover{ background:var(--accent); }
 
-    @media (max-width: 992px){
-      /* keep 2 columns on medium-small screens if desired */
-      .col-md-4 { display:block; } /* fallback so mobile flow is normal */
-    }
     @media (max-width: 768px){
-      .product-card img{ height:160px; }
+      .col-md-4 { display:block; }
       .hero-content h1 { font-size:2rem; }
+      footer { text-align:center; }
+      .socials { justify-content:center; }
     }
   </style>
   
@@ -250,73 +234,36 @@
     </div>
   </section>
 
-  <!-- PRODUCT SHOWCASE -->
+  <!-- PRODUCTS -->
   <section>
     <div class="container">
       <h2 class="section-title text-center">Our Range</h2>
       <div class="row g-4">
-        <!-- TDL -->
+        <!-- sample cards -->
         <div class="col-md-4">
           <div class="product-card fadein">
             <img src="images/feature-drawers.jpg" alt="TDL">
             <div class="product-card-body">
               <h4>TDL – That Desk Locker</h4>
-              <p>Sturdy desk drawer with telescopic runners, attachment brackets, and a multi-user combination lock. 577mm wide × 390mm deep × 50mm high. Available in Black.</p>
+              <p>Sturdy desk drawer with telescopic runners and combination lock. Available in Black.</p>
             </div>
           </div>
         </div>
-
-        <!-- Bizz -->
         <div class="col-md-4">
           <div class="product-card fadein">
-            <img src="images/card-about.jpg" alt="Bizz">
+            <img src="images/card-about.jpg" alt="Bizz Drawer">
             <div class="product-card-body">
               <h4>Bizz Drawer</h4>
-              <p>Desk organizer with compartmentalized sections. Fits 364mm/380mm drawers with 400mm runner. Injection-moulded, supports central locking. Available in Black.</p>
+              <p>Desk organizer with compartmentalized sections, injection-moulded, supports central locking.</p>
             </div>
           </div>
         </div>
-
-        <!-- BV -->
         <div class="col-md-4">
           <div class="product-card fadein">
-            <img src="images/card-acoustix.jpg" alt="BV">
+            <img src="images/card-acoustix.jpg" alt="BV Drawer">
             <div class="product-card-body">
               <h4>BV Drawer</h4>
-              <p>High-quality storage with 450mm runner for 364mm carcass. Made from recycled ABS plastic with built-in central locking. Available in Black.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Varta -->
-        <div class="col-md-4">
-          <div class="product-card fadein">
-            <img src="images/feature-monitor-arms.jpg" alt="Varta">
-            <div class="product-card-body">
-              <h4>Varta Drawer</h4>
-              <p>Robust storage with 570mm runner for 380mm carcass. Made from recycled ABS plastic with slide adapters. Available in Black.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Pencil Tray -->
-        <div class="col-md-4">
-          <div class="product-card fadein">
-            <img src="images/img_2.jpg" alt="Pencil Tray">
-            <div class="product-card-body">
-              <h4>Pencil Tray</h4>
-              <p>Compact storage for small supplies. 4 compartments. Fits BV and Varta drawers. Available in small and medium sizes, Black.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Filing Frame -->
-        <div class="col-md-4">
-          <div class="product-card fadein">
-            <img src="images/img_3.jpg" alt="Filing Frame">
-            <div class="product-card-body">
-              <h4>Filing Frame</h4>
-              <p>Compact filing for A4 and foolscap hanging files. Lightweight and durable. Use with fascia brackets for added support. Available in Black.</p>
+              <p>High-quality storage with central locking, recycled ABS plastic, and smooth runner.</p>
             </div>
           </div>
         </div>
@@ -337,16 +284,9 @@
       <div class="row">
         <div class="col-md-4">
           <h5>Contact Us:</h5>
-          <p><i class="fa fa-envelope"></i> 
-            <strong>Email:</strong> <a href="mailto:sales@cdsplastics.co.za">sales@cdsplastics.co.za</a>
-          </p>
-          <p><i class="fa fa-phone"></i> 
-            <strong>Cape Town:</strong> +27 21 535 4242
-          </p>
-          <p><i class="fa fa-map-marker"></i> 
-            <strong>Address:</strong><br>
-            Unit 12, Bofors Circle, Cape Town
-          </p>
+          <p><i class="fa fa-envelope"></i> <a href="mailto:sales@cdsplastics.co.za">sales@cdsplastics.co.za</a></p>
+          <p><i class="fa fa-phone"></i> Cape Town: +27 21 535 4242</p>
+          <p><i class="fa fa-map-marker"></i> Unit 12, Bofors Circle, Cape Town</p>
         </div>
         <div class="col-md-4">
           <h5>Quick Message:</h5>
@@ -380,22 +320,18 @@
     </div>
   </footer>
 
-  <!-- SCRIPTS -->
+  <!-- JS -->
   <script>
-    // Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Header transparency
     const header = document.getElementById('mainHeader');
     const setHeader = () => header.classList.toggle('transparent', window.scrollY > 60);
     setHeader(); window.addEventListener('scroll', setHeader);
 
-    // Hero fade-in
     window.addEventListener('load', ()=> {
       document.querySelector('.hero-content').classList.add('show');
     });
 
-    // Intersection Observer for fade-in
     const observer = new IntersectionObserver((entries, obs)=>{
       entries.forEach(entry=>{
         if(entry.isIntersecting){
