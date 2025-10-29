@@ -1,0 +1,634 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CDS Plastics | AcoustiX PET Panels</title>
+
+  <!-- Fonts & libs -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,600,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="style1.css">
+
+  <style>
+    :root {
+      --header-h: 60px;
+      --page-bg: #f5f5f5;
+      --page-dot: #e8e8e8;
+      --text: #222;
+      --muted: #555;
+      --accent: #0066cc;
+      --accent-600: #004a99;
+      --footer-bg: #1a1a1a;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      color: var(--text);
+      background: var(--page-bg);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 22 22'%3E%3Ccircle cx='1.5' cy='1.5' r='1' fill='%23e8e8e8'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      scroll-padding-top: var(--header-h);
+    }
+
+    /* HEADER */
+    header {
+      position: fixed;
+      inset: 0 0 auto 0;
+      height: var(--header-h);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      transition: background .35s ease;
+      background: var(--footer-bg);
+    }
+
+    header.transparent {
+      background: rgba(26, 26, 26, .65);
+    }
+
+    .nav-center {
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-center ul {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-center a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 5px;
+      position: relative;
+    }
+
+    .nav-center a span {
+      font-size: 12px;
+      opacity: .75;
+      font-weight: 400;
+    }
+
+    .nav-center a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      height: 2px;
+      width: 0;
+      background: var(--accent);
+      transition: .25s;
+    }
+
+    .nav-center a:hover::after,
+    .nav-center a.active::after {
+      width: 100%;
+    }
+
+    .header-logo {
+      margin: 0 40px;
+    }
+
+    .header-logo img {
+      height: 60px;
+      display: block;
+      animation: spin-3d 6s infinite linear;
+    }
+
+    /* HERO */
+    .hero {
+      margin-top: var(--header-h);
+      height: 70vh;
+      position: relative;
+      background: url('images/hero-acoustix.jpg') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, .55);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      color: #fff;
+      animation: fadeUp 1s ease forwards;
+    }
+
+    .hero-content h1 {
+      font-size: clamp(28px, 6vw, 60px);
+      margin: 0;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .hero-content p {
+      margin-top: 10px;
+      opacity: .95;
+      font-size: 18px;
+    }
+
+    section {
+      padding: 70px 0;
+    }
+
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .section-title h2 {
+      font-size: 34px;
+      font-weight: 700;
+      color: var(--text);
+      display: inline-block;
+      position: relative;
+    }
+
+    .section-title h2::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 3px;
+      background: var(--accent);
+      margin: 12px auto 0;
+      border-radius: 2px;
+      animation: underlineGrow 1.2s ease-out;
+    }
+
+    .about-text {
+      max-width: 880px;
+      margin: 12px auto;
+      color: var(--muted);
+      line-height: 1.7;
+      text-align: center;
+    }
+
+    /* FEATURES */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      margin-top: 18px;
+    }
+
+    .feature-block {
+      background: #fff;
+      border-radius: 14px;
+      padding: 26px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, .06);
+      text-align: center;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .feature-block:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, .1);
+    }
+
+    .feature-block img {
+      width: 52px;
+      height: 52px;
+      margin-bottom: 12px;
+      object-fit: contain;
+    }
+
+    .feature-block h4 {
+      color: var(--accent);
+      margin: 8px 0;
+      font-weight: 700;
+    }
+
+    .feature-block p {
+      color: var(--muted);
+      margin: 0;
+      font-size: 14px;
+    }
+
+    /* SPECS */
+    .specs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .spec-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, .06);
+    }
+
+    .spec-card h5 {
+      color: var(--accent);
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .spec-card p {
+      color: var(--muted);
+      font-size: 14px;
+      margin: 0;
+    }
+
+    /* COLOUR GRID */
+    .colour-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 18px;
+      margin-top: 22px;
+    }
+
+    .colour-tile {
+      background: #fff;
+      border-radius: 12px;
+      padding: 8px;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, .06);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .colour-tile:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, .1);
+    }
+
+    .colour-tile img {
+      width: 100%;
+      height: 110px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .colour-tile span {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    /* CERTS */
+    .certs {
+      display: flex;
+      gap: 26px;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    .certs a img {
+      height: 70px;
+      width: auto;
+      filter: grayscale(1);
+      opacity: 0.8;
+      transition: all 0.3s ease;
+    }
+
+    .certs a:hover img {
+      filter: grayscale(0);
+      opacity: 1;
+      transform: scale(1.05);
+    }
+
+    /* CTA */
+    .download-cta {
+      background: var(--accent);
+      color: #fff;
+      padding: 42px 16px;
+      border-radius: 12px;
+      text-align: center;
+      margin: 36px auto;
+      max-width: 1000px;
+    }
+
+    .download-cta a {
+      background: #fff;
+      color: var(--accent);
+      padding: 12px 24px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 700;
+      display: inline-block;
+    }
+
+    .download-cta a:hover {
+      background: var(--accent-600);
+      color: #fff;
+    }
+
+    /* FOOTER */
+    .prefooter-wave {
+      margin-top: -2px;
+    }
+
+    .prefooter-wave svg {
+      width: 100%;
+      height: 90px;
+      display: block;
+      transform: rotate(180deg);
+    }
+
+    .prefooter-wave path {
+      fill: var(--footer-bg);
+    }
+
+    footer {
+      background: var(--footer-bg);
+      color: #fff;
+      padding: 60px 0 28px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 22 22'%3E%3Ccircle cx='1.5' cy='1.5' r='1' fill='%23ffffff22'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+    }
+
+    footer h5 {
+      color: #fff;
+      font-weight: 600;
+      margin-bottom: 14px;
+    }
+
+    footer a {
+      color: #e6eef9;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: #fff;
+    }
+
+    .footer-minor {
+      border-top: 1px solid rgba(255, 255, 255, .28);
+      margin-top: 22px;
+      padding-top: 14px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .quick-form input,
+    .quick-form textarea {
+      width: 100%;
+      background: #2a2a2a;
+      border: none;
+      color: #fff;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 6px;
+    }
+
+    .quick-form button {
+      background: var(--accent);
+      border: none;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 22px;
+      font-weight: 600;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    @keyframes underlineGrow {
+      from {
+        width: 0
+      }
+
+      to {
+        width: 80px
+      }
+    }
+
+    @keyframes spin-3d {
+      0% {
+        transform: rotateY(0deg);
+      }
+
+      100% {
+        transform: rotateY(360deg);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header id="mainHeader">
+    <div class="nav-center">
+      <ul class="nav-left">
+        <li><a href="index.html">Home <span>Main Page</span></a></li>
+        <li><a href="about.html">About Us <span>Find Out More</span></a></li>
+        <li><a href="speciality-components.html">Speciality <span>Components</span></a></li>
+        <li><a href="weavers.html" class="active">AcoustiX <span>PET Panels</span></a></li>
+      </ul>
+      <div class="header-logo">
+        <a href="index.html"><span class="b"><img src="images/cds-plastics-logo.png" alt="CDS Plastics"></span></a>
+      </div>
+      <ul class="nav-right">
+        <li><a href="comfort-range.html">Comfort <span>Range</span></a></li>
+        <li><a href="gallery.html">Gallery <span>Showcase</span></a></li>
+        <li><a href="faq.html">FAQ <span>Answers</span></a></li>
+        <li><a href="contact.html">Contact <span>Get in Touch</span></a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" aria-label="AcoustiX hero">
+    <div class="hero-content">
+      <h1>AcoustiX PET Panels</h1>
+      <p>Engineered for acoustic comfort, sustainability and elegant design.</p>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section>
+    <div class="container">
+      <div class="section-title">
+        <h2>About AcoustiX</h2>
+      </div>
+      <p class="about-text">
+        AcoustiX is a decorative and functional acoustic panel system designed to reduce reverberation and enhance sound quality
+        in modern spaces. Made from up to 75% post-consumer recycled PET plastic, the panels are lightweight, durable,
+        and fire-safe, offering an eco-friendly solution for interiors that demand both performance and style.
+      </p>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section>
+    <div class="container">
+      <div class="section-title">
+        <h2>Features & Benefits</h2>
+      </div>
+      <div class="features-grid">
+        <div class="feature-block"><img src="images/icons/sound.svg" alt=""><h4>High Acoustic Absorption</h4><p>Noise Reduction Coefficient (NRC) up to 0.9 depending on installation method.</p></div>
+        <div class="feature-block"><img src="images/icons/recycle.svg" alt=""><h4>Recycled & Sustainable</h4><p>Made from 75% post-consumer PET bottles with SCS certification.</p></div>
+        <div class="feature-block"><img src="images/icons/fire.svg" alt=""><h4>Fire Rated</h4><p>Complies with EN13501-1: B-s1,d0 fire safety standards.</p></div>
+        <div class="feature-block"><img src="images/icons/design.svg" alt=""><h4>Design Flexibility</h4><p>Available in multiple colours, shapes, and custom sizes.</p></div>
+        <div class="feature-block"><img src="images/icons/factory.svg" alt=""><h4>Locally Manufactured</h4><p>Proudly made in South Africa using sustainable processes.</p></div>
+        <div class="feature-block"><img src="images/icons/leaf.svg" alt=""><h4>Eco-Friendly</h4><p>Fully recyclable at end-of-life for a circular economy approach.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TECHNICAL DETAILS -->
+  <section>
+    <div class="container">
+      <div class="section-title">
+        <h2>Technical Details</h2>
+      </div>
+      <div class="specs-grid">
+        <div class="spec-card"><h5>Thickness</h5><p>9mm, 12mm, and 24mm options available.</p></div>
+        <div class="spec-card"><h5>Sheet Size</h5><p>1220mm x 2440mm standard size; custom dimensions available on request.</p></div>
+        <div class="spec-card"><h5>Weight</h5><p>1.2–2.4 kg/m² depending on thickness.</p></div>
+        <div class="spec-card"><h5>Composition</h5><p>Up to 75% post-consumer recycled PET.</p></div>
+        <div class="spec-card"><h5>Fire Rating</h5><p>EN13501-1: B-s1,d0 (Tested on 9mm).</p></div>
+        <div class="spec-card"><h5>Acoustic Rating</h5><p>NRC up to 0.9 depending on mounting system.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COLOUR RANGE -->
+  <section style="background:#fff;">
+    <div class="container">
+      <div class="section-title"><h2>Colour Range</h2></div>
+      <div class="colour-grid">
+        <div class="colour-tile"><img src="images/colours/charcoal.jpg" alt=""><span>Charcoal</span></div>
+        <div class="colour-tile"><img src="images/colours/grey.jpg" alt=""><span>Silver Grey</span></div>
+        <div class="colour-tile"><img src="images/colours/sand.jpg" alt=""><span>Sand</span></div>
+        <div class="colour-tile"><img src="images/colours/coral.jpg" alt=""><span>Coral</span></div>
+        <div class="colour-tile"><img src="images/colours/ocean.jpg" alt=""><span>Ocean Blue</span></div>
+        <div class="colour-tile"><img src="images/colours/moss.jpg" alt=""><span>Moss</span></div>
+        <div class="colour-tile"><img src="images/colours/olive.jpg" alt=""><span>Olive</span></div>
+        <div class="colour-tile"><img src="images/colours/mustard.jpg" alt=""><span>Mustard</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section>
+    <div class="container">
+      <div class="section-title"><h2>Certifications & Compliance</h2></div>
+      <div class="certs">
+        <a href="docs/SCS75%.pdf" target="_blank"><img src="images/certificates/scs.png" alt="SCS Certification"></a>
+        <a href="docs/OEKO 2025.pdf" target="_blank"><img src="images/certificates/oeko.png" alt="OEKO-TEX"></a>
+        <a href="docs/EN13501-1 9mm.PDF" target="_blank"><img src="images/certificates/en13501.png" alt="EN13501-1"></a>
+        <a href="docs/EPD - Product Specific.pdf" target="_blank"><img src="images/certificates/epd.png" alt="EPD"></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section>
+    <div class="container">
+      <div class="download-cta">
+        <h3>Download the AcoustiX Comfort Brochure</h3>
+        <p>All technical details, certifications, and acoustic test results in one document.</p>
+        <a href="docs/CDS Acoustix Comfort brochure Aug 22 LR (1).pdf" target="_blank">Download Brochure (PDF)</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <div class="prefooter-wave">
+    <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+      <path
+        d="M985.66,92.83C906.67,72,823.78,31,743,14.19
+        c-82.72-17.34-168.06-16.33-250.45-.39
+        -57.84,11.12-114.27,29.07-172,41.86
+        C199.9,85.19,100.86,105,0,120V0H1200V27.35
+        C1132.19,55.49,1057.52,113.6,985.66,92.83Z" />
+    </svg>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="row">
+        <!-- Contact -->
+        <div class="col-md-4">
+          <h5>Contact Us:</h5>
+          <p><i class="fa fa-envelope"></i> sales@cdsplastics.co.za</p>
+          <p><i class="fa fa-phone"></i> +27 21 535 4242</p>
+          <p><i class="fa fa-map-marker"></i> Unit 12, Bofors Circle, Cape Town</p>
+        </div>
+
+        <!-- Quick Message -->
+        <div class="col-md-4">
+          <h5>Quick Message:</h5>
+          <form class="quick-form">
+            <input type="text" placeholder="Name">
+            <input type="email" placeholder="Email">
+            <textarea placeholder="Message"></textarea>
+            <button type="button">Submit</button>
+          </form>
+        </div>
+
+        <!-- Links -->
+        <div class="col-md-4">
+          <h5>Site Map:</h5>
+          <ul style="list-style:none;padding:0;">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="weavers.html">AcoustiX</a></li>
+            <li><a href="comfort-range.html">Comfort Range</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+          <div class="socials" style="margin-top:15px;">
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <a href="#"><i class="fa fa-linkedin"></i></a>
+            <a href="#"><i class="fa fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-minor">&copy; <span id="year"></span> CDS Plastics. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const header = document.getElementById('mainHeader');
+    const updateHeader = () => header.classList.toggle('transparent', window.scrollY > 60);
+    updateHeader(); window.addEventListener('scroll', updateHeader);
+  </script>
+</body>
+</html>

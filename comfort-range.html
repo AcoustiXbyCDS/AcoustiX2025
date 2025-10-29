@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CDS Plastics | AcoustiX Comfort Range</title>
+
+  <!-- Fonts & libs -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,600,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="style1.css">
+
+  <style>
+    :root {
+      --header-h: 60px;
+      --page-bg: #f5f5f5;
+      --page-dot: #e8e8e8;
+      --text: #222;
+      --muted: #555;
+      --accent: #0066cc;
+      --accent-600: #004a99;
+      --footer-bg: #1a1a1a;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      color: var(--text);
+      background: var(--page-bg);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22'%3E%3Ccircle cx='1.5' cy='1.5' r='1' fill='%23e8e8e8'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      scroll-padding-top: var(--header-h);
+    }
+
+    /* HEADER */
+    header {
+      position: fixed;
+      inset: 0 0 auto 0;
+      height: var(--header-h);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      transition: background .35s ease;
+      background: var(--footer-bg);
+    }
+    header.transparent { background: rgba(26, 26, 26, .65); }
+
+    .nav-center { display: flex; align-items: center; }
+    .nav-center ul { display: flex; gap: 30px; list-style: none; margin: 0; padding: 0; }
+    .nav-center a {
+      color: #fff; text-decoration: none; font-weight: 600; font-size: 14px;
+      display: flex; flex-direction: column; align-items: center; padding: 5px; position: relative;
+    }
+    .nav-center a span { font-size: 12px; opacity: .75; font-weight: 400; }
+    .nav-center a::after {
+      content: ''; position: absolute; left: 0; bottom: -4px; height: 2px;
+      width: 0; background: var(--accent); transition: .25s;
+    }
+    .nav-center a:hover::after { width: 100%; }
+    .header-logo { margin: 0 40px; }
+    .header-logo img { height: 60px; display: block; }
+
+    /* HERO */
+    .hero {
+      margin-top: var(--header-h);
+      height: 60vh;
+      background: url('images/comfort-hero.jpg') center/cover no-repeat;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      text-align: center;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: rgba(0,0,0,.55);
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 700px; animation: fadeUp 1s ease forwards; }
+    .hero-content h1 {
+      font-size: 48px; font-weight: 700; letter-spacing: 1px; margin-bottom: 12px;
+    }
+    .hero-content p { font-size: 18px; color: #ddd; }
+
+    /* INTRO */
+    .intro {
+      max-width: 900px; margin: 80px auto; text-align: center;
+    }
+    .intro h2 {
+      font-weight: 700; color: #1a1a1a; font-size: 36px;
+      position: relative; display: inline-block;
+    }
+    .intro h2::after {
+      content: ''; display: block; width: 80px; height: 3px; background: var(--accent);
+      margin: 12px auto 22px; border-radius: 2px; animation: underlineGrow 1s ease-out;
+    }
+    .intro p { color: var(--muted); }
+
+    /* COLOUR GRID */
+    .colour-grid {
+      display: grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+      gap: 25px; margin: 60px auto; max-width: 1100px;
+    }
+    .colour-tile {
+      background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 6px 18px rgba(0,0,0,.08);
+      transition: transform .3s ease;
+    }
+    .colour-tile:hover { transform: translateY(-6px); }
+    .colour-tile img { width: 100%; height: 160px; object-fit: cover; }
+    .colour-tile p {
+      padding: 10px; margin: 0; font-weight: 600; color: var(--accent-600);
+      text-align: center; background: #fafafa;
+    }
+
+    /* CERTIFICATIONS */
+    .certifications {
+      background: #fff; padding: 80px 0;
+    }
+    .certifications h3 {
+      text-align: center; font-weight: 700; margin-bottom: 40px; color: #1a1a1a;
+    }
+    .cert-row {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 40px;
+      align-items: center; text-align: center;
+    }
+    .cert-box img { height: 80px; margin-bottom: 10px; }
+    .cert-box p { font-weight: 500; color: var(--muted); }
+
+    /* DOWNLOAD SECTION */
+    .download-section {
+      background: var(--accent); color: #fff; text-align: center;
+      padding: 70px 20px;
+    }
+    .download-section h3 { font-weight: 700; margin-bottom: 18px; }
+    .download-section a {
+      background: #fff; color: var(--accent); text-decoration: none;
+      padding: 12px 28px; border-radius: 28px; font-weight: 600; transition: .3s;
+    }
+    .download-section a:hover { background: var(--accent-600); color: #fff; }
+
+    /* WAVES + FOOTER */
+    .prefooter-wave { margin-top: -2px; }
+    .prefooter-wave svg { display: block; transform: rotate(180deg); }
+    .prefooter-wave path { fill: var(--footer-bg); }
+
+    footer {
+      background: var(--footer-bg);
+      color: #fff; padding: 60px 0 28px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22'%3E%3Ccircle cx='1.5' cy='1.5' r='1' fill='%23ffffff22'/%3E%3C/svg%3E");
+    }
+    footer h5 { color:#fff;font-weight:600;margin-bottom:14px; }
+    footer a { color:#e6eef9;text-decoration:none; }
+    footer a:hover { color:#fff; }
+    .footer-minor {
+      border-top:1px solid rgba(255,255,255,.28);
+      margin-top:22px;padding-top:14px;text-align:center;font-size:14px;
+    }
+
+    @keyframes fadeUp { from { opacity:0; transform:translateY(40px);} to {opacity:1; transform:translateY(0);} }
+    @keyframes underlineGrow { from {width:0;} to {width:80px;} }
+  </style>
+</head>
+
+<body>
+  <!-- HEADER -->
+  <header id="mainHeader">
+    <div class="nav-center">
+      <ul class="nav-left">
+        <li><a href="index.html">Home <span>Main Page</span></a></li>
+        <li><a href="about.html">About Us <span>Find Out More</span></a></li>
+        <li><a href="speciality-components.html">Speciality <span>Components</span></a></li>
+        <li><a href="weavers.html">AcoustiX <span>PET Panels</span></a></li>
+      </ul>
+      <div class="header-logo">
+        <a href="index.html"><span class="b"><img src="images/cds-plastics-logo.png" alt="CDS Plastics"></span></a>
+      </div>
+      <ul class="nav-right">
+        <li><a href="comfort-range.html" class="active">Comfort <span>Range</span></a></li>
+        <li><a href="gallery.html">Gallery <span>Showcase</span></a></li>
+        <li><a href="faq.html">FAQ <span>Answers</span></a></li>
+        <li><a href="contact.html">Contact <span>Get in Touch</span></a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>AcoustiX Comfort Range</h1>
+      <p>Premium PET acoustic panels engineered for comfort, colour, and performance.</p>
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <div class="intro">
+    <h2>Comfort in Colour</h2>
+    <p>The AcoustiX Comfort Range combines innovative acoustic performance with timeless aesthetics.  
+    Designed for sustainable interiors, our panels are made from up to 75% recycled PET materials — proudly supporting OEKO-TEX and SCS certifications.</p>
+  </div>
+
+  <!-- COLOUR GRID -->
+  <section class="container">
+    <div class="colour-grid">
+      <div class="colour-tile"><img src="images/comfort1.jpg"><p>Stone Grey</p></div>
+      <div class="colour-tile"><img src="images/comfort2.jpg"><p>Ocean Blue</p></div>
+      <div class="colour-tile"><img src="images/comfort3.jpg"><p>Charcoal</p></div>
+      <div class="colour-tile"><img src="images/comfort4.jpg"><p>Sand Dune</p></div>
+      <div class="colour-tile"><img src="images/comfort5.jpg"><p>Midnight</p></div>
+      <div class="colour-tile"><img src="images/comfort6.jpg"><p>Cloud White</p></div>
+      <div class="colour-tile"><img src="images/comfort7.jpg"><p>Forest Green</p></div>
+      <div class="colour-tile"><img src="images/comfort8.jpg"><p>Terracotta</p></div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section class="certifications">
+    <div class="container">
+      <h3>Certified Sustainable Quality</h3>
+      <div class="cert-row">
+        <div class="cert-box"><img src="images/scs.png" alt="SCS"><p>SCS Certified 75% Recycled PET</p></div>
+        <div class="cert-box"><img src="images/oeko.png" alt="OEKO-TEX"><p>OEKO-TEX Standard 100</p></div>
+        <div class="cert-box"><img src="images/en13501.png" alt="EN13501"><p>EN13501-1 Fire Rating</p></div>
+        <div class="cert-box"><img src="images/epd.png" alt="EPD"><p>Environmental Product Declaration</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DOWNLOAD -->
+  <section class="download-section">
+    <h3>Download the Full Comfort Range Brochure</h3>
+    <a href="docs/CDS_AcoustiX_Comfort_Brochure.pdf" target="_blank">Download PDF</a>
+  </section>
+
+  <!-- WAVE + FOOTER -->
+  <div class="prefooter-wave wave" aria-hidden="true">
+    <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+      <path d="M985.66,92.83C906.67,72,823.78,31,743,14.19c-82.72-17.34-168.06-16.33-250.45-.39-57.84,11.12-114.27,29.07-172,41.86C199.9,85.19,100.86,105,0,120V0H1200V27.35C1132.19,55.49,1057.52,113.6,985.66,92.83Z" />
+    </svg>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 reveal">
+          <h5>Contact Us:</h5>
+          <p><i class="fa fa-envelope"></i> <strong>Email:</strong> <a href="mailto:sales@cdsplastics.co.za">sales@cdsplastics.co.za</a></p>
+          <p><i class="fa fa-phone"></i> <strong>Cape Town:</strong> +27 21 535 4242</p>
+          <p><i class="fa fa-map-marker"></i> <strong>Address:</strong><br>Unit 12, Bofors Circle, Cape Town</p>
+        </div>
+
+        <div class="col-md-4 reveal">
+          <h5>Quick Message:</h5>
+          <form class="quick-form">
+            <div class="row">
+              <div class="col-6"><input type="text" placeholder="Name"></div>
+              <div class="col-6"><input type="text" placeholder="Phone"></div>
+            </div>
+            <input type="email" placeholder="Email Address">
+            <textarea placeholder="Message"></textarea>
+            <button type="button">Submit</button>
+          </form>
+        </div>
+
+        <div class="col-md-4 reveal">
+          <h5>Site Map:</h5>
+          <ul style="list-style:none; padding:0;">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="weavers.html">AcoustiX</a></li>
+            <li><a href="comfort-range.html">Comfort Range</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+          <div class="socials" style="margin-top:15px;">
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <a href="#"><i class="fa fa-linkedin"></i></a>
+            <a href="#"><i class="fa fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-minor">&copy; <span id="year"></span> CDS Plastics. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    const header = document.getElementById('mainHeader');
+    const setHeader = () => header.classList.toggle('transparent', window.scrollY > 60);
+    setHeader(); window.addEventListener('scroll', setHeader);
+
+    const reveals = document.querySelectorAll('.reveal, .colour-tile, .cert-box');
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);}
+      });
+    },{threshold:.35});
+    reveals.forEach(el=>io.observe(el));
+  </script>
+</body>
+</html>
