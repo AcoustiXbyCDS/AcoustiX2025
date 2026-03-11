@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Drawer Systems | CDS Plastics</title>
+
+  <!-- Fonts & CSS -->
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,600,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+
+    :root{
+      --header-h: 90px;
+      --page-bg: #f5f5f5;
+      --page-dot: #e8e8e8;
+      --text: #222;
+      --muted: #555;
+      --accent: #0066cc;
+      --footer-bg:#1a1a1a;
+    }
+    body{
+      margin:0; font-family:'Poppins',sans-serif; color:var(--text);
+      background:var(--page-bg);
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 22 22'%3E%3Ccircle cx='1.5' cy='1.5' r='1' fill='%23e8e8e8'/%3E%3C/svg%3E");
+      background-repeat:repeat;
+      scroll-padding-top:var(--header-h);
+    }
+    html{scroll-behavior:smooth;}
+
+
+
+    /* HERO */
+    .hero{
+      margin-top:var(--header-h);
+      height:55vh;
+      background:url('images/feature-drawers.jpg') center/cover no-repeat;
+      display:flex; align-items:center; justify-content:center;
+      position:relative; text-align:center; color:#fff;
+    }
+    .hero::after{ content:''; position:absolute; inset:0; background:rgba(0,0,0,.55); }
+    .hero-content{ position:relative; z-index:2; opacity:0; transform:translateY(30px); transition:all 800ms ease; }
+    .hero-content.show{ opacity:1; transform:translateY(0); }
+    .hero-content h1{ font-size:3rem; font-weight:700; margin-bottom:15px; }
+    .hero-content p{ font-size:1.2rem; max-width:700px; margin:0 auto; }
+
+    /* SECTION TITLE */
+    .section-title{
+      text-align:center; font-size:2.2rem; font-weight:700;
+      margin-bottom:50px; color:#1a1a1a; position:relative; display:block; width:100%;
+    }
+    .section-title::after{
+      content:''; display:block; width:80px; height:3px; background:var(--accent);
+      margin:12px auto 0; border-radius:2px;
+    }
+    section{ padding:70px 0; }
+
+    /* Fade-in reusable */
+    .fadein{ opacity:0; transform:translateY(30px); transition:opacity .8s ease, transform .8s ease; }
+    .fadein.in{ opacity:1; transform:none; }
+
+    /* PRODUCT CARDS */
+    .row.g-4 { row-gap: 60px; }
+    .col-md-4 { display: flex; }
+    .product-card{
+      background:#fff; border-radius:12px; overflow:hidden;
+      box-shadow:0 6px 20px rgba(0,0,0,.08);
+      transition:transform .25s ease, box-shadow .25s ease;
+      height:100%; display:flex; flex-direction:column;
+    }
+    .product-card:hover{ transform:translateY(-6px); box-shadow:0 8px 24px rgba(0,0,0,.12); }
+    .product-card img{ width:100%; display:block; height:200px; object-fit:cover; }
+    .product-card-body{ padding:20px; flex:1; }
+    .product-card h4{ font-weight:700; margin-bottom:12px; color:var(--accent); }
+    .product-card p{ font-size:0.95rem; color:var(--muted); line-height:1.6; margin-bottom:0; }
+
+    /* CTA */
+    .cta{
+      background:#222; color:#fff; text-align:center; padding:70px 20px;
+    }
+    .cta h2{ font-size:2.2rem; margin-bottom:20px; }
+    .cta a{
+      display:inline-block; background:#ff6b35; color:#fff; padding:12px 28px;
+      border-radius:30px; font-weight:600; text-decoration:none;
+      transition:background .3s ease;
+    }
+    .cta a:hover{ background:#e65a28; }
+
+    
+  </style>
+  
+   
+  
+</head>
+
+
+<body>
+  <!-- PAGE LOADER -->
+<div id="page-loader">
+  <div class="loader-content">
+    
+    <img src="images/cds-plastics-logo.png" alt="CDS Logo">
+
+    <div class="loader-ring"></div>
+
+  </div>
+</div>
+  <!-- HEADER -->
+<header id="mainHeader">
+  <div class="nav-center">
+
+    <!-- LEFT NAV -->
+    <ul class="nav-left">
+      <li>
+        <a href="index.html" class="active">
+          Home <span>Main Page</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="about.html">
+          About Us <span>Find Out More</span>
+        </a>
+      </li>
+
+      <!-- SPECIALITY DROPDOWN -->
+      <li class="dropdown">
+        <a href="speciality-components.html">
+          Speciality <span>Components</span>
+        </a>
+
+        <ul class="dropdown-menu">
+          <li><a href="monitor-arms.html">Agilis Monitor Arms</a></li>
+          <li><a href="full-drawer-systems.html">Drawer Systems</a></li>
+          <li><a href="levellers-brackets.html">Levellers & Brackets</a></li>
+          <li><a href="cable-management.html">Cable Management</a></li>
+        </ul>
+      </li>
+
+      <li>
+        <a href="weavers.html">
+          AcoustiX <span>PET Panels</span>
+        </a>
+      </li>
+    </ul>
+
+    <!-- LOGO -->
+    <a href="index.html" class="header-logo">
+      <div class="coin">
+        <div class="side front">
+          <img src="images/cds-plastics-logo.png" alt="CDS Plastics">
+        </div>
+        <div class="side back">
+          <img src="images/PNG.png" alt="AcoustiX">
+        </div>
+      </div>
+    </a>
+
+    <!-- RIGHT NAV -->
+    <ul class="nav-right">
+      <li>
+        <a href="comfort-range.html">
+          Comfort <span>Range</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="gallery.html">
+          Gallery <span>Showcase</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="faq.html">
+          FAQ <span>Answers</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="contact.html">
+          Contact <span>Get in Touch</span>
+        </a>
+      </li>
+    </ul>
+
+  </div>
+</header>
+ <!-- PAGE TITLE -->
+<section class="container text-center mt-5 pt-5">
+  <h1 class="fw-bold">Drawers</h1>
+  <hr class="w-25 mx-auto">
+</section>
+<div class="text-center mb-5">
+    <img src="images/levellers-banner.jpg" class="img-fluid" alt="Levellers and Brackets">
+</div>
+
+<!-- ============================= -->
+<!-- TDL THAT DESK LOCKER -->
+<!-- ============================= -->
+<section class="container py-5">
+  <h2 class="text-center text-danger fw-bold mb-4">
+    TDL THAT DESK LOCKER
+  </h2>
+
+   <img src="images/tdl-1.jpg" class="img-fluid rounded" alt="TDL Drawer">
+
+  <div class="mt-4 text-center">
+    <h5 class="fw-bold">TDL Specifications:</h5>
+    <p>
+      Width: 577mm<br>
+      Depth: 390mm<br>
+      Height: 50mm<br>
+      Supplied complete with telescopic runners, attachment brackets and
+      multiuser combination lock.
+    </p>
+  </div>
+</section>
+
+
+<!-- ============================= -->
+<!-- BIZZ DRAWER -->
+<!-- ============================= -->
+<section class="container py-5 border-top">
+  <h2 class="text-center text-danger fw-bold mb-4">
+    The “BIZZ” Drawer
+  </h2>
+
+    <img src="images/bizz-1.jpg" class="img-fluid rounded" alt="Bizz Drawer">
+    
+  <div class="text-center mt-4">
+    <p class="fw-semibold">
+      Get your desk in order by organising your drawers to have the essentials
+      close by without clogging up your work space.
+    </p>
+
+    <p>
+      The BIZZ DRAWER is the ultimate desk drawer organiser designed to contain
+      small office supplies in one place.
+    </p>
+
+    <h5 class="fw-bold mt-3">BIZZ Drawer Specifications:</h5>
+    <p>
+      400mm runner<br>
+      Fitted to 364mm ID carcass or 380mm ID carcass<br>
+      Injection moulded<br>
+      Central locking
+    </p>
+  </div>
+</section>
+
+
+<!-- ============================= -->
+<!-- BV DRAWER -->
+<!-- ============================= -->
+<section class="container py-5 border-top">
+  <h2 class="text-center text-danger fw-bold mb-4">
+    BV Drawer
+  </h2>
+
+  <div class="text-center">
+    <img src="images/bv-drawer.jpg" class="img-fluid rounded" alt="BV Drawer">
+  </div>
+
+  <div class="text-center mt-4">
+    <h5 class="fw-bold">BV Drawer Specifications:</h5>
+    <p>
+      Predrilled for facia 450 runner<br>
+      364mm ID carcass<br>
+      Manufactured from recycled ABS plastic<br>
+      Built-in central locking
+    </p>
+  </div>
+</section>
+
+
+<!-- ============================= -->
+<!-- VARTA DRAWER -->
+<!-- ============================= -->
+<section class="container py-5 border-top">
+  <h2 class="text-center text-danger fw-bold mb-4">
+    Varta Drawer
+  </h2>
+
+  <div class="text-center">
+    <img src="images/varta-drawer.jpg" class="img-fluid rounded" alt="Varta Drawer">
+  </div>
+
+  <div class="text-center mt-4">
+    <h5 class="fw-bold">Varta Drawer Specifications:</h5>
+    <p>
+      Predrilled for facia 570mm runner<br>
+      380mm ID carcass<br>
+      Manufactured from recycled ABS plastic
+    </p>
+  </div>
+</section>
+
+
+<!-- ============================= -->
+<!-- PENCIL TRAY -->
+<!-- ============================= -->
+<section class="container py-5 border-top">
+  <h2 class="text-center text-danger fw-bold mb-4">
+    Pencil Tray
+  </h2>
+
+  <div class="text-center">
+    <img src="images/pencil-tray.jpg" class="img-fluid rounded" alt="Pencil Tray">
+  </div>
+
+  <div class="text-center mt-4">
+    <h5 class="fw-bold">Pencil Tray Specifications:</h5>
+    <p>
+      Available in small, medium and large.<br>
+      Fits perfectly widthways into BV and Varta drawers.<br>
+      Manufactured from high density styrene.
+    </p>
+
+    <p class="fw-semibold mt-3">
+      The Pencil tray is a compact solution to store small office supplies in a
+      neat and organised manner.
+    </p>
+  </div>
+</section>
+
+
+<!-- ============================= -->
+<!-- FILING FRAME -->
+<!-- ============================= -->
+<section class="container py-5 border-top mb-5">
+  <h2 class="text-center text-danger fw-bold mb-4">
+    Filing Frame
+  </h2>
+
+  <div class="row g-4 justify-content-center">
+    <div class="col-md-5 text-center">
+      <img src="images/filing-frame-1.jpg" class="img-fluid rounded" alt="Filing Frame">
+    </div>
+
+    <div class="col-md-5 text-center">
+      <img src="images/filing-frame-2.jpg" class="img-fluid rounded" alt="Filing Frame Installed">
+    </div>
+  </div>
+</section>
+    <!-- SMOOTH WAVE BEFORE FOOTER -->
+  <div class="prefooter-wave wave">
+    <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+      <path
+        d="M985.66,92.83C906.67,72,823.78,31,743,14.19
+               c-82.72-17.34-168.06-16.33-250.45-.39
+               -57.84,11.12-114.27,29.07-172,41.86
+               C199.9,85.19,100.86,105,0,120V0H1200V27.35
+               C1132.19,55.49,1057.52,113.6,985.66,92.83Z" />
+    </svg>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        
+        <!-- COLUMN 1: CONTACT -->
+       <div class="col-lg-4 col-md-6 reveal">
+          <h5>Contact Us:</h5>
+          <p><i class="fa fa-envelope"></i>
+            <strong>Email:</strong> <a href="mailto:sales@cdsplastics.co.za">sales@cdsplastics.co.za</a>
+          </p>
+          <p><i class="fa fa-phone"></i>
+            <strong>Cape Town:</strong> +27 21 535 4242
+          </p>
+          <p><i class="fa fa-map-marker"></i>
+            <strong>Address:</strong><br>
+            Unit 12, Bofors Circle, Cape Town
+          </p>
+        </div>
+
+        <!-- COLUMN 2: QUICK MESSAGE -->
+        <div class="col-md-4 reveal">
+          <h5>Quick Message:</h5>
+          <form class="quick-form">
+            <div class="row">
+              <div class="col-6"><input type="text" placeholder="Name"></div>
+              <div class="col-6"><input type="text" placeholder="Phone"></div>
+            </div>
+            <input type="email" placeholder="Email Address">
+            <textarea placeholder="Message"></textarea>
+            <button type="button">Submit</button>
+          </form>
+        </div>
+
+        <!-- COLUMN 3: UPDATED SITE MAP + OPERATING HOURS -->
+        <div class="col-md-4 reveal">
+          <h5>Site Map:</h5>
+          <ul style="list-style:none; padding:0; margin:0;">
+
+<li><a href="index.html">Home</a></li>
+<li><a href="about.html">About</a></li>
+
+<li><a href="speciality-components.html">Speciality Components</a></li>
+<li><a href="monitor-arms.html">Agilis Monitor Arms</a></li>
+<li><a href="full-drawer-systems.html">Drawer Systems</a></li>
+<li><a href="Levellers&Brackets.html">Levellers & Brackets</a></li>
+<li><a href="cable-management.html">Cable Management</a></li>
+
+<li><a href="weavers.html">AcoustiX PET Panels</a></li>
+<li><a href="comfort-range.html">Comfort Range</a></li>
+<li><a href="gallery.html">Gallery</a></li>
+<li><a href="faq.html">FAQ</a></li>
+<li><a href="contact.html">Contact</a></li>
+
+
+
+         
+            <li><a href="cable-management.html">Cable Management</a></li>
+            <li><a href="full-drawer-systems.html">Drawer Systems</a></li>
+
+            <li><a href="monitor-arms.html">Agilis Monitor Arms</a></li>
+          </ul>
+
+          <!-- OPERATING HOURS INSERTED EXACTLY AS REQUESTED -->
+          <div style="margin-top:18px; color:#ddd; font-size:14px;">
+            <strong>Operating Hours:</strong><br>
+            Mon–Thu: 08:00–16:00<br>
+            Fri: 08:00–13:00
+          </div>
+
+          <div class="socials" style="margin-top:15px;">
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <a href="#"><i class="fa fa-linkedin"></i></a>
+            <a href="#"><i class="fa fa-instagram"></i></a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer-minor">&copy; <span id="year"></span> CDS Plastics. All rights reserved.</div>
+    </div>
+
+ 
+  </footer>
+   <!-- SCRIPTS -->
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>CDS Plastics | Gallery</title>
+
+<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,600,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="css/style.css">
+  
+<style>
+
+
+/* HERO */
+
+.gallery-hero{
+margin-top:var(--header-h);
+background:
+linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.4)),
+url('images/hero1.jpg') center/cover no-repeat;
+
+color:#fff;
+text-align:center;
+padding:120px 20px;
+}
+
+.gallery-hero h1{
+font-size:44px;
+font-weight:700;
+}
+
+.gallery-hero p{
+opacity:.9;
+font-size:18px;
+}
+
+/* CATEGORY */
+
+.container-main{
+max-width:1140px;
+margin:auto;
+padding:40px 20px;
+}
+
+.category{
+background:#fff;
+border-radius:12px;
+padding:20px;
+margin-bottom:20px;
+cursor:pointer;
+display:flex;
+justify-content:space-between;
+align-items:center;
+box-shadow:0 8px 20px rgba(0,0,0,.05);
+}
+
+.category-title{
+font-size:20px;
+font-weight:700;
+color:var(--text);
+}
+
+.category i{
+font-size:22px;
+color:var(--accent);
+}
+
+/* GALLERY GRID */
+
+.gallery-grid{
+display:none;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:16px;
+margin-bottom:30px;
+}
+
+.gallery-item{
+background:#fff;
+border-radius:12px;
+overflow:hidden;
+box-shadow:0 6px 16px rgba(0,0,0,.06);
+transition:.25s;
+}
+
+.gallery-item:hover{
+transform:translateY(-4px);
+box-shadow:0 10px 26px rgba(0,0,0,.1);
+}
+
+.gallery-item img{
+width:100%;
+height:180px;
+object-fit:cover;
+display:block;
+}
+
+
+
+</style>
+</head>
+  <!-- PAGE LOADER -->
+<div id="page-loader">
+  <div class="loader-content">
+    
+    <img src="images/cds-plastics-logo.png" alt="CDS Logo">
+
+    <div class="loader-ring"></div>
+
+  </div>
+</div>
+<body>
+
+<!-- HEADER -->
+<header id="mainHeader">
+  <div class="nav-center">
+
+    <!-- LEFT NAV -->
+    <ul class="nav-left">
+      <li>
+        <a href="index.html" class="active">
+          Home <span>Main Page</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="about.html">
+          About Us <span>Find Out More</span>
+        </a>
+      </li>
+
+      <!-- SPECIALITY DROPDOWN -->
+      <li class="dropdown">
+        <a href="speciality-components.html">
+          Speciality <span>Components</span>
+        </a>
+
+        <ul class="dropdown-menu">
+          <li><a href="monitor-arms.html">Agilis Monitor Arms</a></li>
+          <li><a href="full-drawer-systems.html">Drawer Systems</a></li>
+          <li><a href="levellers-brackets.html">Levellers & Brackets</a></li>
+          <li><a href="cable-management.html">Cable Management</a></li>
+        </ul>
+      </li>
+
+      <li>
+        <a href="weavers.html">
+          AcoustiX <span>PET Panels</span>
+        </a>
+      </li>
+    </ul>
+
+    <!-- LOGO -->
+    <a href="index.html" class="header-logo">
+      <div class="coin">
+        <div class="side front">
+          <img src="images/cds-plastics-logo.png" alt="CDS Plastics">
+        </div>
+        <div class="side back">
+          <img src="images/PNG.png" alt="AcoustiX">
+        </div>
+      </div>
+    </a>
+
+    <!-- RIGHT NAV -->
+    <ul class="nav-right">
+      <li>
+        <a href="comfort-range.html">
+          Comfort <span>Range</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="gallery.html">
+          Gallery <span>Showcase</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="faq.html">
+          FAQ <span>Answers</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="contact.html">
+          Contact <span>Get in Touch</span>
+        </a>
+      </li>
+    </ul>
+
+  </div>
+</header>
+
+<!-- HERO -->
+
+<section class="gallery-hero">
+<h1>Gallery</h1>
+<p>Explore our Dividers, Screens, Panels, Cable Solutions & More</p>
+</section>
+
+
+<!-- GALLERY -->
+
+<div class="container-main">
+
+
+<!-- 1 -->
+<div class="category" onclick="toggleGallery('cat1',this)">
+<span class="category-title">Dividers, Hanging & Standing Screens</span>
+<i class="fa fa-plus"></i>
+</div>
+
+<div id="cat1" class="gallery-grid">
+<div class="gallery-item"><img src="images/gallery/dividers/01.jpg"></div>
+<div class="gallery-item"><img src="images/gallery/dividers/02.jpg"></div>
+<div class="gallery-item"><img src="images/gallery/dividers/03.jpg"></div>
+</div>
+
+
+<!-- 2 -->
+<div class="category" onclick="toggleGallery('cat2',this)">
+<span class="category-title">Desk & Comfort Screens</span>
+<i class="fa fa-plus"></i>
+</div>
+
+<div id="cat2" class="gallery-grid">
+<div class="gallery-item"><img src="images/gallery/desk-comfort/01.jpg"></div>
+<div class="gallery-item"><img src="images/gallery/desk-comfort/02.jpg"></div>
+<div class="gallery-item"><img src="images/gallery/desk-comfort/03.jpg"></div>
+</div>
+
+
+<!-- 3 -->
+<div class="category" onclick="toggleGallery('cat3',this)">
+<span class="category-title">Wall Panels</span>
+<i class="fa fa-plus"></i>
+</div>
+
+<div id="cat3" class="gallery-grid">
+<div class="gallery-item"><img src="images/gallery/wall-panels/01.jpg"></div>
+<div class="gallery-item"><img src="images/gallery/wall-panels/02.jpg"></div>
+<div class="gallery-item"><img src="images/gallery/wall-panels/03.jpg"></div>
+</div>
+
+
+<!-- 4 -->
+<div class="category" onclick="toggleGallery('cat4',this)">
+<span class="category-title">Ceiling Baffles</span>
+<i class="fa fa-plus"></i>
+</div>
+
+<div id="cat4" class="gallery-grid">
+<div class="gallery-item"><img src="images/gallery/baffles/01.jpg"></div>
+<div class="gallery-item"><img src="images/gallery/baffles/02.jpg"></div>
+<div class="gallery-item"><img src="images/gallery/baffles/03.jpg"></div>
+</div>
+
+
+<!-- 5 -->
+<div class="category" onclick="toggleGallery('cat5',this)">
+<span class="category-title">Phone Booths & Bla Bla Box</span>
+<i class="fa fa-plus"></i>
+</div>
+
+<div id="cat5" class="gallery-grid">
+<div class="gallery-item"><img src="images/gallery/booths/01.jpg"></div>
+<div class="gallery-item"><img src="images/gallery/booths/02.jpg"></div>
+<div class="gallery-item"><img src="images/gallery/booths/03.jpg"></div>
+</div>
+
+
+<!-- 6 -->
+<div class="category" onclick="toggleGallery('cat6',this)">
+<span class="category-title">Cable Management</span>
+<i class="fa fa-plus"></i>
+</div>
+
+<div id="cat6" class="gallery-grid">
+<div class="gallery-item"><img src="images/gallery/cable-management/01.jpg"></div>
+<div class="gallery-item"><img src="images/gallery/cable-management/02.jpg"></div>
+<div class="gallery-item"><img src="images/gallery/cable-management/03.jpg"></div>
+<div class="gallery-item"><img src="images/gallery/cable-management/01.jpg"></div>
+<div class="gallery-item"><img src="images/gallery/cable-management/02.jpg"></div>
+<div class="gallery-item"><img src="images/gallery/cable-management/03.jpg"></div>
+<div class="gallery-item"><img src="images/gallery/cable-management/01.jpg"></div>
+<div class="gallery-item"><img src="images/gallery/cable-management/02.jpg"></div>
+<div class="gallery-item"><img src="images/gallery/cable-management/03.jpg"></div>
+</div>
+
+
+<!-- 7 -->
+<div class="category" onclick="toggleGallery('cat7',this)">
+<span class="category-title">Agilis Monitor Arms</span>
+<i class="fa fa-plus"></i>
+</div>
+
+<div id="cat7" class="gallery-grid">
+<div class="gallery-item"><img src="images/gallery/drawers/01.jpg"></div>
+<div class="gallery-item"><img src="images/gallery/drawers/02.jpg"></div>
+<div class="gallery-item"><img src="images/gallery/drawers/03.jpg"></div>
+<div class="gallery-item"><img src="images/gallery/drawers/04.jpg"></div>
+
+<div class="gallery-item"><img src="images/gallery/drawers/05.jpg"></div>
+<div class="gallery-item"><img src="images/gallery/drawers/06.jpg"></div>
+<div class="gallery-item"><img src="images/gallery/drawers/07.jpg"></div>
+<div class="gallery-item"><img src="images/gallery/drawers/08.jpg"></div>
+
+<div class="gallery-item"><img src="images/gallery/drawers/09.jpg"></div>
+<div class="gallery-item"><img src="images/gallery/drawers/10.jpg"></div>
+<div class="gallery-item"><img src="images/gallery/drawers/11.jpg"></div>
+<div class="gallery-item"><img src="images/gallery/drawers/12.jpg"></div>
+
+<div class="gallery-item"><img src="images/gallery/drawers/13.jpg"></div>
+<div class="gallery-item"><img src="images/gallery/drawers/14.jpg"></div>
+<div class="gallery-item"><img src="images/gallery/drawers/15.jpg"></div>
+<div class="gallery-item"><img src="images/gallery/drawers/16.jpg"></div>
+
+</div>
+
+
+<!-- 8 -->
+<div class="category" onclick="toggleGallery('cat8',this)">
+<span class="category-title">Levellers & Brackets</span>
+<i class="fa fa-plus"></i>
+</div>
+
+<div id="cat8" class="gallery-grid">
+<div class="gallery-item"><img src="images/gallery/levellers/01.jpg"></div>
+<div class="gallery-item"><img src="images/gallery/levellers/02.jpg"></div>
+<div class="gallery-item"><img src="images/gallery/levellers/03.jpg"></div>
+</div>
+
+
+<!-- 9 -->
+<div class="category" onclick="toggleGallery('cat9',this)">
+<span class="category-title">Drawers</span>
+<i class="fa fa-plus"></i>
+</div>
+
+<div id="cat9" class="gallery-grid">
+<div class="gallery-item"><img src="images/gallery/drawers/01.jpg"></div>
+<div class="gallery-item"><img src="images/gallery/drawers/02.jpg"></div>
+<div class="gallery-item"><img src="images/gallery/drawers/03.jpg"></div>
+</div>
+
+</div>
+
+   
+  <div class="prefooter-wave wave" aria-hidden="true">
+    <svg viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M985.66,92.83C906.67,72,823.78,31,743,14.19c-82.72-17.34-168.06-16.33-250.45-.39C434.71,24.92,378.28,42.87,320.55,55.66C199.9,85.19,100.86,105,0,120V0H1200V27.35C1132.19,55.49,1057.52,113.6,985.66,92.83Z"/></svg>
+  </div>
+<!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        
+        <!-- COLUMN 1: CONTACT -->
+        <div class="col-md-4 reveal">
+          <h5>Contact Us:</h5>
+          <p><i class="fa fa-envelope"></i>
+            <strong>Email:</strong> <a href="mailto:sales@cdsplastics.co.za">sales@cdsplastics.co.za</a>
+          </p>
+          <p><i class="fa fa-phone"></i>
+            <strong>Cape Town:</strong> +27 21 535 4242
+          </p>
+          <p><i class="fa fa-map-marker"></i>
+            <strong>Address:</strong><br>
+            Unit 12, Bofors Circle, Cape Town
+          </p>
+        </div>
+
+        <!-- COLUMN 2: QUICK MESSAGE -->
+        <div class="col-md-4 reveal">
+          <h5>Quick Message:</h5>
+          <form class="quick-form">
+            <div class="row">
+              <div class="col-6"><input type="text" placeholder="Name"></div>
+              <div class="col-6"><input type="text" placeholder="Phone"></div>
+            </div>
+            <input type="email" placeholder="Email Address">
+            <textarea placeholder="Message"></textarea>
+            <button type="button">Submit</button>
+          </form>
+        </div>
+
+        <!-- COLUMN 3: UPDATED SITE MAP + OPERATING HOURS -->
+        <div class="col-md-4 reveal">
+          <h5>Site Map:</h5>
+          <ul style="list-style:none; padding:0; margin:0;">
+
+<li><a href="index.html">Home</a></li>
+<li><a href="about.html">About</a></li>
+
+<li><a href="speciality-components.html">Speciality Components</a></li>
+<li><a href="monitor-arms.html">Agilis Monitor Arms</a></li>
+<li><a href="full-drawer-systems.html">Drawer Systems</a></li>
+<li><a href="Levellers&Brackets.html">Levellers & Brackets</a></li>
+<li><a href="cable-management.html">Cable Management</a></li>
+
+<li><a href="weavers.html">AcoustiX PET Panels</a></li>
+<li><a href="comfort-range.html">Comfort Range</a></li>
+<li><a href="gallery.html">Gallery</a></li>
+<li><a href="faq.html">FAQ</a></li>
+<li><a href="contact.html">Contact</a></li>
+
+
+
+         
+            <li><a href="cable-management.html">Cable Management</a></li>
+            <li><a href="full-drawer-systems.html">Drawer Systems</a></li>
+
+            <li><a href="monitor-arms.html">Agilis Monitor Arms</a></li>
+          </ul>
+
+          <!-- OPERATING HOURS INSERTED EXACTLY AS REQUESTED -->
+          <div style="margin-top:18px; color:#ddd; font-size:14px;">
+            <strong>Operating Hours:</strong><br>
+            Mon–Thu: 08:00–16:00<br>
+            Fri: 08:00–13:00
+          </div>
+
+          <div class="socials" style="margin-top:15px;">
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <a href="#"><i class="fa fa-linkedin"></i></a>
+            <a href="#"><i class="fa fa-instagram"></i></a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer-minor">&copy; <span id="year"></span> CDS Plastics. All rights reserved.</div>
+    </div>
+  </footer>
+
+
+<script>
+
+document.getElementById("year").textContent=new Date().getFullYear();
+
+function toggleGallery(id,el){
+
+const grid=document.getElementById(id);
+const icon=el.querySelector("i");
+
+if(grid.style.display==="grid"){
+grid.style.display="none";
+icon.classList.replace("fa-minus","fa-plus");
+}
+else{
+grid.style.display="grid";
+icon.classList.replace("fa-plus","fa-minus");
+}
+
+}
+
+</script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>

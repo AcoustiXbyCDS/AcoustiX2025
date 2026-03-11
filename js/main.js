@@ -1,181 +1,94 @@
-(function($) {
+ document.getElementById('year').textContent = new Date().getFullYear();
 
-	'use strict';
+    const header = document.getElementById('mainHeader');
+    const setHeader = () => header.classList.toggle('transparent', window.scrollY > 60);
+    setHeader(); window.addEventListener('scroll', setHeader);
 
-	// bootstrap dropdown hover
+    const revealables = document.querySelectorAll('.reveal, .info-card');
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          if (e.target.classList.contains('slide-in-left') || e.target.classList.contains('slide-in-right')) {
+            e.target.classList.add('slide-active');
+          } else { e.target.classList.add('in'); }
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: .35 });
+    revealables.forEach(el => io.observe(el));
 
-  // loader
-  var loader = function() {
-    setTimeout(function() { 
-      if($('#loader').length > 0) {
-        $('#loader').removeClass('show');
-      }
-    }, 1);
-  };
-  loader();
+    const slides = document.querySelectorAll('.hero-slide');
+    let current = 0;
+    setInterval(() => {
+      slides[current].classList.remove('active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('active');
+    }, 4000);
 
-  // Stellar
-  $(window).stellar();
+    
+window.addEventListener("load", function(){
 
-	
-	$('nav .dropdown').hover(function(){
-		var $this = $(this);
-		$this.addClass('show');
-		$this.find('> a').attr('aria-expanded', true);
-		$this.find('.dropdown-menu').addClass('show');
-	}, function(){
-		var $this = $(this);
-			$this.removeClass('show');
-			$this.find('> a').attr('aria-expanded', false);
-			$this.find('.dropdown-menu').removeClass('show');
-	});
+  const loader = document.getElementById("page-loader");
 
+  setTimeout(function(){
 
-	$('#dropdown04').on('show.bs.dropdown', function () {
-	  console.log('show');
-	});
+    loader.style.opacity = "0";
 
+    setTimeout(function(){
+      loader.style.display = "none";
+    }, 600);
 
+  },800);
+  // ////////////about page/////////////
+// Year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  const header = document.getElementById('mainHeader');
+    const setHeader = () => header.classList.toggle('transparent', window.scrollY > 60);
+    setHeader(); window.addEventListener('scroll', setHeader);
 
-	// home slider
-	$('.home-slider').owlCarousel({
-    loop:true,
-    autoplay: true,
-    margin:10,
-    animateOut: 'fadeOut',
-    animateIn: 'fadeIn',
-    nav:true,
-    autoplayHoverPause: true,
-    items: 1,
-    navText : ["<span class='ion-chevron-left'></span>","<span class='ion-chevron-right'></span>"],
-    responsive:{
-      0:{
-        items:1,
-        nav:false
-      },
-      600:{
-        items:1,
-        nav:false
-      },
-      1000:{
-        items:1,
-        nav:true
-      }
-    }
-	});
+    // Scroll reveal
+    const revealables = document.querySelectorAll(
+      '.section-title, .content-text, .content-section img, .team-card, footer .reveal'
+    );
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          if(e.target.classList.contains('slide-in-left') || e.target.classList.contains('slide-in-right')){
+            e.target.classList.add('slide-active');
+          } else {
+            e.target.classList.add('in');
+          }
+          io.unobserve(e.target);
+        }
+      });
+    }, {threshold:.35});
+    revealables.forEach(el => io.observe(el));
 
-	// owl carousel
-	var majorCarousel = $('.js-carousel-1');
-	majorCarousel.owlCarousel({
-    loop:true,
-    autoplay: false,
-    stagePadding: 0,
-    margin: 10,
-    animateOut: 'fadeOut',
-    animateIn: 'fadeIn',
-    nav: false,
-    dots: false,
-    autoplayHoverPause: false,
-    items: 3,
-    responsive:{
-      0:{
-        items:1,
-        nav:false
-      },
-      600:{
-        items:2,
-        nav:false
-      },
-      1000:{
-        items:3,
-        nav:true,
-        loop:false
-      }
-  	}
-	});
-
-  // cusotm owl navigation events
-  $('.custom-next').click(function(event){
-    event.preventDefault();
-    // majorCarousel.trigger('owl.next');
-    majorCarousel.trigger('next.owl.carousel');
-
-  })
-  $('.custom-prev').click(function(event){
-    event.preventDefault();
-    // majorCarousel.trigger('owl.prev');
-    majorCarousel.trigger('prev.owl.carousel');
-  })
-
-	// owl carousel
-	var major2Carousel = $('.js-carousel-2');
-	major2Carousel.owlCarousel({
-    loop:true,
-    autoplay: true,
-    stagePadding: 7,
-    margin: 20,
-    animateOut: 'fadeOut',
-    animateIn: 'fadeIn',
-    nav: false,
-    autoplayHoverPause: true,
-    items: 4,
-    navText : ["<span class='ion-chevron-left'></span>","<span class='ion-chevron-right'></span>"],
-    responsive:{
-      0:{
-        items:1,
-        nav:false
-      },
-      600:{
-        items:3,
-        nav:false
-      },
-      1000:{
-        items:4,
-        nav:true,
-        loop:false
-      }
-  	}
-	});
+    if(document.getElementById('typed-text')){
+new Typed('#typed-text', {
+strings:[
+"Where Sound Meets Design",
+"Innovation in Every Detail",
+"Acoustic Solutions for Modern Spaces"
+],
+typeSpeed:50,
+backSpeed:25,
+loop:true
+});
+}
 
 
- 
+});
+const hamburger = document.getElementById("hamburger");
+const mobileMenu = document.getElementById("mobileMenu");
 
-	var contentWayPoint = function() {
-		var i = 0;
-		$('.element-animate').waypoint( function( direction ) {
+if(hamburger){
 
-			if( direction === 'down' && !$(this.element).hasClass('element-animated') ) {
-				
-				i++;
+hamburger.addEventListener("click", function(){
 
-				$(this.element).addClass('item-animate');
-				setTimeout(function(){
+hamburger.classList.toggle("active");
+mobileMenu.classList.toggle("active");
 
-					$('body .element-animate.item-animate').each(function(k){
-						var el = $(this);
-						setTimeout( function () {
-							var effect = el.data('animate-effect');
-							if ( effect === 'fadeIn') {
-								el.addClass('fadeIn element-animated');
-							} else if ( effect === 'fadeInLeft') {
-								el.addClass('fadeInLeft element-animated');
-							} else if ( effect === 'fadeInRight') {
-								el.addClass('fadeInRight element-animated');
-							} else {
-								el.addClass('fadeInUp element-animated');
-							}
-							el.removeClass('item-animate');
-						},  k * 100);
-					});
-					
-				}, 100);
-				
-			}
+});
 
-		} , { offset: '95%' } );
-	};
-	contentWayPoint();
-
-
-
-})(jQuery);
+}

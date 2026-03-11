@@ -1,374 +1,336 @@
+
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Agilis Monitor Arms | CDS Plastics</title>
+  <title>CDS Plastics | Agilis Monitor Arms</title>
 
-  <!-- Fonts & CSS -->
-  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,600,700&display=swap" rel="stylesheet">
+  <!-- Fonts & Libraries -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,600,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/bootstrap.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="css/style.css">
 
   <style>
-    :root{
-      --header-h: 90px;
-      --page-bg: #f5f5f5;
-      --page-dot: #e8e8e8;
-      --text: #222;
-      --muted: #555;
-      --accent: #0066cc;
-      --footer-bg:#1a1a1a;
-    }
-    body{
-      margin:0; font-family:'Poppins',sans-serif; color:var(--text);
-      background:var(--page-bg);
-      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 22 22'%3E%3Ccircle cx='1.5' cy='1.5' r='1' fill='%23e8e8e8'/%3E%3C/svg%3E");
-      background-repeat:repeat;
-      scroll-padding-top:var(--header-h);
-    }
-    html{scroll-behavior:smooth;}
-
-    /* HEADER */
-    header{
-      position:fixed; inset:0 0 auto 0; height:var(--header-h);
-      display:flex; justify-content:center; align-items:center;
-      z-index:1000; transition:background .35s ease;
-      background:var(--footer-bg);
-    }
-    header.transparent{ background:rgba(26,26,26,.65); }
-    .nav-center{ display:flex; align-items:center; justify-content:space-between;
-      width:100%; max-width:1200px; padding:0 20px; }
-    .nav-left,.nav-right{ display:flex; gap:30px; list-style:none; margin:0; padding:0; flex:1; }
-    .nav-left{ justify-content:flex-end; }
-    .nav-right{ justify-content:flex-start; }
-    .nav-center a{
-      color:#fff; text-decoration:none; font-weight:600; font-size:14px;
-      display:flex; flex-direction:column; align-items:center; padding:5px; position:relative;
-    }
-    .nav-center a span{ font-size:12px; opacity:.75; font-weight:400; }
-    .nav-center a::after{
-      content:''; position:absolute; left:0; bottom:-4px; height:2px; width:0; background:var(--accent); transition:.25s;
-    }
-    .nav-center a:hover::after,.nav-center a.active::after{ width:100%; }
-    .header-logo{ flex-shrink:0; margin:0 40px; display:flex; justify-content:center; }
-    .header-logo img{ height:60px; display:block; }
-
-    /* HERO */
-    .hero{
-      margin-top:var(--header-h);
-      height:60vh;
-      background:url('images/feature-monitor-arms.jpg') center/cover no-repeat;
-      display:flex; align-items:center; justify-content:center;
-      position:relative; text-align:center; color:#fff;
-    }
-    .hero::after{ content:''; position:absolute; inset:0; background:rgba(0,0,0,.55); }
-    .hero-content{ position:relative; z-index:2; opacity:0; transform:translateY(30px); transition:all 800ms ease; }
-    .hero-content.show{ opacity:1; transform:translateY(0); }
-    .hero-content h1{ font-size:3rem; font-weight:700; margin-bottom:10px; }
-    .hero-content p{ font-size:1.3rem; }
-
-    /* SECTION TITLE */
-    .section-title{
-      text-align:center; font-size:2.2rem; font-weight:700;
-      margin-bottom:40px; color:#1a1a1a; position:relative; display:inline-block;
-    }
-    .section-title::after{
-      content:''; display:block; width:80px; height:3px; background:var(--accent);
-      margin:12px auto 0; border-radius:2px;
+    body {
+      font-family: 'Poppins', sans-serif;
+      background:#f5f5f5;
+      margin:0;
+      padding-top:80px;
     }
 
-    section{ padding:70px 0; }
-
-    /* Fade-in reusable */
-    .fadein{ opacity:0; transform:translateY(30px); transition:opacity .8s ease, transform .8s ease; }
-    .fadein.in{ opacity:1; transform:none; }
-
-    /* FEATURES */
-    .feature-box{
-      background:#fff; border-radius:12px; padding:32px;
-      box-shadow:0 6px 20px rgba(0,0,0,.08); text-align:center;
-      height:100%; margin-bottom:50px;
-    }
-    .feature-box img{
-      width:160px; height:160px; object-fit:cover; border-radius:8px; margin-bottom:20px;
-    }
-    .row.g-4 { 
-  row-gap: 50px; /* extra space between rows */
-}
-
-    /* GALLERY */
-    .gallery-grid{
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:30px;
-    }
-    .gallery-grid img{
-      width:100%; height:300px; object-fit:cover; border-radius:12px;
+    .page-section{
+      padding:60px 0;
     }
 
-    /* CUSTOMIZATION */
-    .swatches{ display:flex; justify-content:center; gap:30px; margin-top:30px; }
-    .swatch{ width:70px; height:70px; border-radius:50%;
-      border:3px solid #ccc; box-shadow:0 4px 10px rgba(0,0,0,.1);
-      transition:transform .25s ease, box-shadow .25s ease;
-    }
-    .swatch:hover{ transform:scale(1.15); box-shadow:0 6px 16px rgba(0,0,0,.2); }
-    .swatch.black{ background:#000; }
-    .swatch.silver{ background:#aaa; }
-    .swatch.white{ background:#fff; }
-    .swatch-label{ text-align:center; margin-top:8px; font-weight:600; color:var(--muted); }
+   
 
-    /* CTA */
-    .cta{
-      background:#222; color:#fff; text-align:center; padding:70px 20px;
-    }
-    .cta h2{ font-size:2.2rem; margin-bottom:20px; }
-    .cta a{
-      display:inline-block; background:#ff6b35; color:#fff; padding:12px 28px;
-      border-radius:30px; font-weight:600; text-decoration:none;
-      transition:background .3s ease;
-    }
-    .cta a:hover{ background:#e65a28; }
-
-    /* FOOTER */
-    footer{
-      background:var(--footer-bg); color:#fff; padding:60px 0 28px;
-      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 22 22'%3E%3Ccircle cx='1.5' cy='1.5' r='1' fill='%23ffffff22'/%3E%3C/svg%3E");
-      background-repeat:repeat;
-    }
-    footer h5{ color:#fff; font-weight:600; margin-bottom:14px; }
-    footer a{ color:#e6eef9; text-decoration:none; }
-    footer a:hover{ color:#fff; }
-    .footer-minor{ border-top:1px solid rgba(255,255,255,.28); margin-top:22px; padding-top:14px; text-align:center; font-size:14px; }
-    .quick-form input,.quick-form textarea{
-      width:100%; background:#2a2a2a; border:none; color:#fff;
-      padding:10px; margin-bottom:10px; border-radius:6px;
-    }
-    .quick-form button{
-      background:var(--accent); border:none; color:#fff;
-      padding:10px 20px; border-radius:22px; font-weight:600;
+    .product-img{
+      max-width:420px;
+      margin:30px auto;
+      display:block;
     }
 
-    @media (max-width: 768px){
-      .gallery-grid { grid-template-columns: 1fr; }
-      .feature-box img { width:120px; height:120px; }
-      .hero-content h1 { font-size:2rem; }
+    .config img{
+      width:100%;
+      height:200px;
+      object-fit:cover;
+      border-radius:8px;
     }
+
+    .feature-list{
+      max-width:700px;
+      margin:auto;
+    }
+
+   
   </style>
-  
-    <style>
-    .coin {
-	 margin-top: 50px;
-      width: 130px;
-	  height: 100px;
-      display: block;
-      position: relative;
-      transform-style: preserve-3d;
-      animation: flip 8s linear infinite; /* continuous spin */
-    }
-
-    .side {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      backface-visibility: hidden; /* hides the back until rotated */
-    }
-
-    .front {
-      transform: rotateY(0deg);
-    }
-
-    .back {
-      transform: rotateY(180deg);
-    }
-
-    .side img {
-      width: 60%;
-      height: 40%;
-      object-fit: contain;
-    }
-
-
-    @keyframes flip {
-      0%   { transform: rotateY(0deg); }
-      50%  { transform: rotateY(180deg); }
-      100% { transform: rotateY(360deg); }
-    }
-  </style>  
-  
 </head>
+
 <body>
 
-  <!-- HEADER -->
-  <header id="mainHeader">
-    <div class="nav-center">
-      <ul class="nav-left">
-        <li><a href="index.html">Home <span>Main Page</span></a></li>
-        <li><a href="about.html">About Us <span>Find Out More</span></a></li>
-        <li><a href="speciality-components.html" class="active">Speciality <span>Components</span></a></li>
-        <li><a href="weavers.html">AcoustiX <span>PET Panels</span></a></li>
-      <div class="header-logo">
-			<div class="coin">
-				<div class="side front"><img src="images/cds-plastics-logo.png" alt="CDS Plastics"></div>
-				<div class="side back"><img src="images/PNG.png" alt="CDS Plastics"></div>
-			</div>
-      </div>
-      <ul class="nav-right">
-        <li><a href="comfort-range.html">Comfort <span>Range</span></a></li>
-        <li><a href="gallery.html">Gallery <span>Showcase</span></a></li>
-        <li><a href="faq.html">FAQ <span>Answers</span></a></li>
-        <li><a href="contact.html">Contact <span>Get in Touch</span></a></li>
-      </ul>
-    </div>
-  </header>
+<header id="mainHeader">
+  <div class="nav-center">
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-content">
-      <h1>Agilis Monitor Arms</h1>
-      <p>Ergonomic Flexibility for Every Workspace</p>
-    </div>
-  </section>
+    <!-- LEFT NAV -->
+    <ul class="nav-left">
+      <li>
+        <a href="index.html" class="active">
+          Home <span>Main Page</span>
+        </a>
+      </li>
 
-  <!-- INTRO -->
-  <section class="fadein">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-md-6">
-          <img src="images/card-about.jpg" alt="Agilis Arm" class="img-fluid rounded">
+      <li>
+        <a href="about.html">
+          About Us <span>Find Out More</span>
+        </a>
+      </li>
+
+      <!-- SPECIALITY DROPDOWN -->
+      <li class="dropdown">
+        <a href="speciality-components.html">
+          Speciality <span>Components</span>
+        </a>
+
+        <ul class="dropdown-menu">
+          <li><a href="monitor-arms.html">Agilis Monitor Arms</a></li>
+          <li><a href="full-drawer-systems.html">Drawer Systems</a></li>
+          <li><a href="levellers-brackets.html">Levellers & Brackets</a></li>
+          <li><a href="cable-management.html">Cable Management</a></li>
+        </ul>
+      </li>
+
+      <li>
+        <a href="weavers.html">
+          AcoustiX <span>PET Panels</span>
+        </a>
+      </li>
+    </ul>
+
+    <!-- LOGO -->
+    <a href="index.html" class="header-logo">
+      <div class="coin">
+        <div class="side front">
+          <img src="images/cds-plastics-logo.png" alt="CDS Plastics">
         </div>
-        <div class="col-md-6 intro-text">
-          <h2 class="section-title">Why Agilis?</h2>
-          <p>The Agilis Monitor Arm range is designed to improve workspace ergonomics, reduce strain, and optimize productivity. With modular options, sustainable materials, and a sleek design, Agilis arms adapt to any office environment.</p>
+        <div class="side back">
+          <img src="images/PNG.png" alt="AcoustiX">
         </div>
       </div>
-    </div>
-  </section>
+    </a>
 
-  <!-- FEATURES -->
-  <section>
-    <div class="container text-center">
-      <h2 class="section-title">Key Features</h2>
-      <div class="row g-4">
-        <div class="col-md-4"><div class="feature-box fadein"><img src="images/feature-monitor-arms.jpg" alt=""><h4>Universal Compatibility</h4><p>Fits most monitors with standard VESA mounts.</p></div></div>
-        <div class="col-md-4"><div class="feature-box fadein"><img src="images/feature-acoustix.jpg" alt=""><h4>Flexible Mounting</h4><p>Desk clamp or grommet mount for easy installation.</p></div></div>
-        <div class="col-md-4"><div class="feature-box fadein"><img src="images/feature-drawers.jpg" alt=""><h4>Modular Design</h4><p>Support from 1 up to 4 monitors with modular arms.</p></div></div>
-        <div class="col-md-4"><div class="feature-box fadein"><img src="images/feature-drawers.jpg" alt=""><h4>Durable Build</h4><p>Made with high-quality recyclable aluminium.</p></div></div>
-        <div class="col-md-4"><div class="feature-box fadein"><img src="images/feature-acoustix.jpg" alt=""><h4>Sustainability</h4><p>Manufactured with eco-friendly processes since 2002.</p></div></div>
-        <div class="col-md-4"><div class="feature-box fadein"><img src="images/feature-monitor-arms.jpg" alt=""><h4>Ergonomic Benefits</h4><p>Enhances comfort, posture, and workspace efficiency.</p></div></div>
+    <!-- RIGHT NAV -->
+    <ul class="nav-right">
+      <li>
+        <a href="comfort-range.html">
+          Comfort <span>Range</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="gallery.html">
+          Gallery <span>Showcase</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="faq.html">
+          FAQ <span>Answers</span>
+        </a>
+      </li>
+
+      <li>
+        <a href="contact.html">
+          Contact <span>Get in Touch</span>
+        </a>
+      </li>
+    </ul>
+
+  </div>
+</header>
+
+
+<!-- ================= PAGE CONTENT ================= -->
+
+<section class="page-section">
+  <div class="container text-center">
+
+    <h1>Agilis Monitor Arms</h1>
+
+    <img src="images/agilis-main.png"
+         alt="Agilis Monitor Arm"
+         class="product-img">
+
+    <p class="lead">
+      The Agilis Computer Monitor Arm is a multi-directional ergonomic monitor
+      support system designed to support single or multiple monitors.
+      Since 2002, Agilis has been proudly manufactured in South Africa,
+      helping reduce back and neck strain through ergonomic positioning.
+    </p>
+
+    <p>
+      Agilis is compatible with monitors using a VESA mounting pattern and
+      can be installed by clamping or bolting onto desks.
+      Flexible positioning and wall-mount options help maximise workspace efficiency.
+    </p>
+
+    <p>
+      Manufactured using durable virgin materials,
+      Agilis follows environmentally responsible production processes,
+      ensuring recyclable components and long-lasting performance.
+    </p>
+
+  </div>
+</section>
+
+
+<!-- CONFIGURATIONS -->
+<section class="page-section bg-white">
+  <div class="container">
+
+    <h2>Configurations</h2>
+
+    <div class="row text-center config">
+
+      <div class="col-md-3 mb-4">
+        <img src="images/single.jpg">
+        <p class="mt-2">Single</p>
       </div>
-    </div>
-  </section>
 
-  <!-- GALLERY -->
-  <section>
-    <div class="container text-center">
-      <h2 class="section-title">Product Gallery</h2>
-      <div class="gallery-grid">
-        <img class="fadein" src="images/feature-monitor-arms.jpg" alt="">
-        <img class="fadein" src="images/card-acoustix.jpg" alt="">
-        <img class="fadein" src="images/card-about.jpg" alt="">
-        <img class="fadein" src="images/feature-drawers.jpg" alt="">
+      <div class="col-md-3 mb-4">
+        <img src="images/double-vertical.jpg">
+        <p class="mt-2">Double Vertical</p>
       </div>
-    </div>
-  </section>
 
-  <!-- CUSTOMIZATION -->
-  <section class="fadein">
-    <div class="container text-center">
-      <h2 class="section-title">Customization</h2>
-      <p>Agilis arms are available in a variety of finishes to complement your workspace.</p>
-      <div class="swatches">
-        <div><div class="swatch black"></div><div class="swatch-label">Black</div></div>
-        <div><div class="swatch silver"></div><div class="swatch-label">Silver</div></div>
-        <div><div class="swatch white"></div><div class="swatch-label">White</div></div>
+      <div class="col-md-3 mb-4">
+        <img src="images/double-horizontal.jpg">
+        <p class="mt-2">Double Horizontal</p>
       </div>
-    </div>
-  </section>
 
-  <!-- CTA -->
-  <section class="cta fadein">
-    <h2>Upgrade Your Workspace Today</h2>
-    <p>Contact us to learn more about the Agilis Monitor Arm range and request a quote.</p>
-    <a href="contact.html">Get in Touch</a>
-  </section>
+      <div class="col-md-3 mb-4">
+        <img src="images/double-double.jpg">
+        <p class="mt-2">Double Double</p>
+      </div>
+
+    </div>
+
+    <div class="text-center mt-4">
+      <img src="images/laptop-config.jpg" style="max-width:300px;">
+      <p class="mt-2">Double with Laptop</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- KEY FEATURES -->
+<section class="page-section">
+  <div class="container">
+
+    <h2>Key Features</h2>
+
+    <ul class="feature-list">
+      <li>Universal VESA compatibility</li>
+      <li>Clamp or bolt-on installation</li>
+      <li>Durable recyclable materials</li>
+      <li>Modular adjustable design</li>
+      <li>Supports up to 4 screens</li>
+    </ul>
+
+  </div>
+</section>
+
+
+ <!-- SMOOTH WAVE BEFORE FOOTER -->
+  <div class="prefooter-wave wave">
+    <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+      <path
+        d="M985.66,92.83C906.67,72,823.78,31,743,14.19
+               c-82.72-17.34-168.06-16.33-250.45-.39
+               -57.84,11.12-114.27,29.07-172,41.86
+               C199.9,85.19,100.86,105,0,120V0H1200V27.35
+               C1132.19,55.49,1057.52,113.6,985.66,92.83Z" />
+    </svg>
+  </div>
 
   <!-- FOOTER -->
-  <footer class="fadein">
+  <footer>
     <div class="container">
       <div class="row">
-        <div class="col-md-4">
+        
+        <!-- COLUMN 1: CONTACT -->
+        <div class="col-md-4 reveal">
           <h5>Contact Us:</h5>
-          <p><i class="fa fa-envelope"></i> 
+          <p><i class="fa fa-envelope"></i>
             <strong>Email:</strong> <a href="mailto:sales@cdsplastics.co.za">sales@cdsplastics.co.za</a>
           </p>
-          <p><i class="fa fa-phone"></i> 
+          <p><i class="fa fa-phone"></i>
             <strong>Cape Town:</strong> +27 21 535 4242
           </p>
-          <p><i class="fa fa-map-marker"></i> 
+          <p><i class="fa fa-map-marker"></i>
             <strong>Address:</strong><br>
             Unit 12, Bofors Circle, Cape Town
           </p>
         </div>
-        <div class="col-md-4">
+
+        <!-- COLUMN 2: QUICK MESSAGE -->
+        <div class="col-md-4 reveal">
           <h5>Quick Message:</h5>
           <form class="quick-form">
-            <input type="text" placeholder="Name">
-            <input type="email" placeholder="Email">
-            <textarea rows="4" placeholder="Message"></textarea>
-            <button type="button">Send</button>
+            <div class="row">
+              <div class="col-6"><input type="text" placeholder="Name"></div>
+              <div class="col-6"><input type="text" placeholder="Phone"></div>
+            </div>
+            <input type="email" placeholder="Email Address">
+            <textarea placeholder="Message"></textarea>
+            <button type="button">Submit</button>
           </form>
         </div>
-        <div class="col-md-4">
+
+        <!-- COLUMN 3: UPDATED SITE MAP + OPERATING HOURS -->
+        <div class="col-md-4 reveal">
           <h5>Site Map:</h5>
           <ul style="list-style:none; padding:0; margin:0;">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="speciality-components.html">Speciality</a></li>
-            <li><a href="weavers.html">AcoustiX</a></li>
-            <li><a href="comfort-range.html">Comfort Range</a></li>
-            <li><a href="gallery.html">Gallery</a></li>
-            <li><a href="faq.html">FAQ</a></li>
-            <li><a href="contact.html">Contact</a></li>
+
+<li><a href="index.html">Home</a></li>
+<li><a href="about.html">About</a></li>
+
+<li><a href="speciality-components.html">Speciality Components</a></li>
+<li><a href="monitor-arms.html">Agilis Monitor Arms</a></li>
+<li><a href="full-drawer-systems.html">Drawer Systems</a></li>
+<li><a href="Levellers&Brackets.html">Levellers & Brackets</a></li>
+<li><a href="cable-management.html">Cable Management</a></li>
+
+<li><a href="weavers.html">AcoustiX PET Panels</a></li>
+<li><a href="comfort-range.html">Comfort Range</a></li>
+<li><a href="gallery.html">Gallery</a></li>
+<li><a href="faq.html">FAQ</a></li>
+<li><a href="contact.html">Contact</a></li>
+
+
+
+         
+            <li><a href="cable-management.html">Cable Management</a></li>
+            <li><a href="full-drawer-systems.html">Drawer Systems</a></li>
+
+            <li><a href="monitor-arms.html">Agilis Monitor Arms</a></li>
           </ul>
+
+          <!-- OPERATING HOURS INSERTED EXACTLY AS REQUESTED -->
+          <div style="margin-top:18px; color:#ddd; font-size:14px;">
+            <strong>Operating Hours:</strong><br>
+            Mon–Thu: 08:00–16:00<br>
+            Fri: 08:00–13:00
+          </div>
+
           <div class="socials" style="margin-top:15px;">
             <a href="#"><i class="fa fa-facebook"></i></a>
             <a href="#"><i class="fa fa-linkedin"></i></a>
             <a href="#"><i class="fa fa-instagram"></i></a>
           </div>
         </div>
+
       </div>
+
       <div class="footer-minor">&copy; <span id="year"></span> CDS Plastics. All rights reserved.</div>
     </div>
   </footer>
 
   <!-- SCRIPTS -->
-  <script>
-    // Year
-    document.getElementById('year').textContent = new Date().getFullYear();
+  <script src="js/main.js"></script>
+  </footer>
 
-    // Header transparency
-    const header = document.getElementById('mainHeader');
-    const setHeader = () => header.classList.toggle('transparent', window.scrollY > 60);
-    setHeader(); window.addEventListener('scroll', setHeader);
 
-    // Hero fade-in
-    window.addEventListener('load', ()=> {
-      document.querySelector('.hero-content').classList.add('show');
-    });
 
-    // Intersection Observer for fade-in
-    const observer = new IntersectionObserver((entries, obs)=>{
-      entries.forEach(entry=>{
-        if(entry.isIntersecting){
-          entry.target.classList.add('in');
-          obs.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.25 });
 
-    document.querySelectorAll('.fadein').forEach(el => observer.observe(el));
-  </script>
+<script>
+document.getElementById("year").textContent =
+  new Date().getFullYear();
+</script>
+
 </body>
 </html>
+
